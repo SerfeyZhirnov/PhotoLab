@@ -15,15 +15,20 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 
 
 include_directories(
+    ${CMAKE_SOURCE_DIR}/model
+    ${CMAKE_SOURCE_DIR}/view
     ${CMAKE_SOURCE_DIR}/controller
 )
 
 set(HEADERS
+    ${CMAKE_SOURCE_DIR}/model/model.h
+    ${CMAKE_SOURCE_DIR}/view/view.h
     ${CMAKE_SOURCE_DIR}/controller/controller.h
 )
 
 set(SOURCES
-    ${CMAKE_SOURCE_DIR}/controller/controller.cc
+    ${CMAKE_SOURCE_DIR}/model/model.cc
+    ${CMAKE_SOURCE_DIR}/view/view.cc
 )
 
 set(FORMS ${CMAKE_SOURCE_DIR}/forms/mainwindow.ui)
@@ -49,15 +54,9 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         ${app_icon_macos}
     )
 else()
-    if(ANDROID)
-        add_library(${PROJECT_NAME} SHARED
-            ${PROJECT_SOURCES}
-        )
-    else()
-        add_executable(${PROJECT_NAME}
-            ${PROJECT_SOURCES}
-        )
-    endif()
+    add_executable(${PROJECT_NAME}
+        ${PROJECT_SOURCES}
+    )
 endif()
 
 target_compile_options(
