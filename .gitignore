@@ -52,8 +52,9 @@ Mkfile.old
 dkms.conf
 
 # Temporary
-*build-PhotoLAb*
+*build*
 *.txt.user
 misc
 materials
 README*
+.vscode
