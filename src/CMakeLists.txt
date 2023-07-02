@@ -36,10 +36,17 @@ set(PROJECT_SOURCES
     ${CMAKE_SOURCE_DIR}/main.cc
 )
 
+if(APPLE)
+    set(MACOSX_BUNDLE_ICON_FILE appicon.png)
+    set(app_icon_macos "${CMAKE_SOURCE_DIR}/data/appicon.png")
+    set_source_files_properties(${app_icon_macos} PROPERTIES MACOSX_PACKAGE_LOCATION "Resources")
+endif()
+
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(${PROJECT_NAME}
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
+        ${app_icon_macos}
     )
 else()
     if(ANDROID)
