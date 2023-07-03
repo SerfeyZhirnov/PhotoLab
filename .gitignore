@@ -54,7 +54,5 @@ dkms.conf
 # Temporary
 *build*
 *.txt.user
-misc
-materials
 README*
 .vscode
