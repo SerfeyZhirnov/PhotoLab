@@ -5,12 +5,13 @@
 
 class Model {
  public:
-   void SetOriginal(const QImage &image) {m_original = m_filtered = image;}
-   const QImage &GetOriginal() const {return m_original;}
-   const QImage &GetFiltered() const {return m_original;}
+  void SetOriginal(const QImage &image) { m_original = m_filtered = image; }
+  const QImage &GetOriginal() const { return m_original; }
+  const QImage &GetFiltered() const { return m_original; }
+
  private:
-   QImage m_original;
-   QImage m_filtered;
+  QImage m_original;
+  QImage m_filtered;
 };
 
 #endif  // PHOTOLAB_MODEL_MODEL_H_
