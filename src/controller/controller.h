@@ -8,20 +8,9 @@
 
 class Controller {
  public:
-  bool SetOriginal(const QString &filename) {
-    if (filename.isEmpty()) {
-      return false;
-    }
-
-    QImage image;
-    bool loaded = image.load(filename);
-    if (!loaded) {
-      return false;
-    }
-
-    m_model.SetOriginal(image);
-    return true;
-  }
+  bool SetImage(const QString &filename);
+  const QImage &GetOriginal() { return m_model.GetOriginal(); }
+  const QImage &GetFiltered() { return m_model.GetFiltered(); }
 
  private:
   Model m_model;

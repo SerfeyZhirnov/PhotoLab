@@ -8,16 +8,40 @@ View::View(QWidget *parent) : QMainWindow(parent), m_ui(new Ui::MainWindow) {
 
 View::~View() { delete m_ui; }
 
+void View::resizeEvent(QResizeEvent *event) {
+  QMainWindow::resizeEvent(event);
+  UpdateLabelImage();
+}
+
+void View::UpdateLabelImage() {
+  QSize updated = m_ui->lb_image->size();
+  const QImage &image = m_controller.GetFiltered();
+  if (image.isNull()) {
+    UpdateStatusBarMessage("Please, upload image");
+  } else {
+    QImage scaled = image.scaled(updated, Qt::KeepAspectRatio);
+    m_ui->lb_image->setPixmap(QPixmap::fromImage(scaled));
+  }
+}
+
+void View::UpdateStatusBarMessage(QString message) {
+  m_ui->statusbar->showMessage(message);
+  QTimer::singleShot(m_display_time, m_ui->statusbar,
+                     [this]() { m_ui->statusbar->clearMessage(); });
+}
+
 void View::on_act_open_triggered() {
   QString filename = QFileDialog::getOpenFileName(
       this, "Choose file", QDir::currentPath(), "BMP (*.bmp)");
 
-  bool status = m_controller.SetOriginal(filename);
+  bool status = m_controller.SetImage(filename);
   if (status) {
-    m_ui->statusbar->showMessage("Image uploaded successfully");
+    UpdateStatusBarMessage("Image uploaded successfully");
+    const QImage &image = m_controller.GetOriginal();
+    m_ui->lb_image->setMinimumHeight(image.height());
+    m_ui->lb_image->setMinimumWidth(image.width());
+    UpdateLabelImage();
   } else {
-    m_ui->statusbar->showMessage("Image uploaded unsuccessfully");
+    UpdateStatusBarMessage("Image uploaded unsuccessfully");
   }
-  QTimer::singleShot(m_display_time, m_ui->statusbar,
-                     [this]() { m_ui->statusbar->clearMessage(); });
 }

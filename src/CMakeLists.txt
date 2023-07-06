@@ -29,6 +29,7 @@ set(HEADERS
 set(SOURCES
     ${CMAKE_SOURCE_DIR}/model/model.cc
     ${CMAKE_SOURCE_DIR}/view/view.cc
+    ${CMAKE_SOURCE_DIR}/controller/controller.cc
 )
 
 set(FORMS ${CMAKE_SOURCE_DIR}/forms/mainwindow.ui)

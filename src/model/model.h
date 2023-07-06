@@ -5,7 +5,7 @@
 
 class Model {
  public:
-  void SetOriginal(const QImage &image) { m_original = m_filtered = image; }
+  void SetImage(const QImage &image) { m_original = m_filtered = image; }
   const QImage &GetOriginal() const { return m_original; }
   const QImage &GetFiltered() const { return m_original; }
 
