@@ -25,9 +25,9 @@ void View::UpdateLabelImage() {
 }
 
 void View::UpdateStatusBarMessage(QString message) {
-  m_ui->statusbar->showMessage(message);
-  QTimer::singleShot(m_display_time, m_ui->statusbar,
-                     [this]() { m_ui->statusbar->clearMessage(); });
+  m_ui->status_bar->showMessage(message);
+  QTimer::singleShot(m_display_time, m_ui->status_bar,
+                     [this]() { m_ui->status_bar->clearMessage(); });
 }
 
 void View::on_act_open_triggered() {
@@ -36,11 +36,11 @@ void View::on_act_open_triggered() {
 
   bool status = m_controller.SetImage(filename);
   if (status) {
-    UpdateStatusBarMessage("Image uploaded successfully");
     const QImage &image = m_controller.GetOriginal();
     m_ui->lb_image->setMinimumHeight(image.height());
     m_ui->lb_image->setMinimumWidth(image.width());
     UpdateLabelImage();
+    UpdateStatusBarMessage("Image uploaded successfully");
   } else {
     UpdateStatusBarMessage("Image uploaded unsuccessfully");
   }

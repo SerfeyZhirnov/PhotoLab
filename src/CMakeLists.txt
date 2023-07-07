@@ -18,21 +18,27 @@ include_directories(
     ${CMAKE_SOURCE_DIR}/model
     ${CMAKE_SOURCE_DIR}/view
     ${CMAKE_SOURCE_DIR}/controller
+    ${CMAKE_SOURCE_DIR}/customwidgets/filterswindow
 )
 
 set(HEADERS
     ${CMAKE_SOURCE_DIR}/model/model.h
     ${CMAKE_SOURCE_DIR}/view/view.h
     ${CMAKE_SOURCE_DIR}/controller/controller.h
+    ${CMAKE_SOURCE_DIR}/customwidgets/filterswindow/filterswindow.h
 )
 
 set(SOURCES
     ${CMAKE_SOURCE_DIR}/model/model.cc
     ${CMAKE_SOURCE_DIR}/view/view.cc
     ${CMAKE_SOURCE_DIR}/controller/controller.cc
+    ${CMAKE_SOURCE_DIR}/customwidgets/filterswindow/filterswindow.cc
 )
 
-set(FORMS ${CMAKE_SOURCE_DIR}/forms/mainwindow.ui)
+set(FORMS 
+    ${CMAKE_SOURCE_DIR}/forms/mainwindow.ui
+    ${CMAKE_SOURCE_DIR}/forms/filterswindow.ui 
+)
 set(CMAKE_AUTOUIC_SEARCH_PATHS forms)
 
 set(PROJECT_SOURCES
