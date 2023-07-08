@@ -10,7 +10,7 @@ class Model {
   const QImage &GetOriginal() const { return m_original; }
   const QImage &GetFiltered() const { return m_filtered; }
   void Grayscale();
-  void Negative() { qDebug() << "Negative"; }
+  void Negative();
   void Toning() { qDebug() << "Toning"; }
 
  private:
