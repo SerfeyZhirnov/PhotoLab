@@ -26,19 +26,22 @@ class View : public QMainWindow {
  protected:
   void resizeEvent(QResizeEvent *) override;
 
- private slots:
-  void on_act_open_triggered();
-  void on_act_default_triggered();
-  void on_btnGroupSent(QString);
-
  private:
   Ui::MainWindow *m_ui;
   FiltersWindow *m_filters;
   Controller m_controller;
 
   const int m_display_time = 10000;
+  enum class Image { Original, Filtered };
 
-  void UpdateLabelImage();
   void UpdateStatusBarMessage(QString);
+ private slots:
+  void on_act_open_triggered();
+  void on_act_default_triggered();
+  void on_btnGroupSent(QString);
+  void on_imageUpdate(View::Image);
+
+ signals:
+  void update_image(View::Image);
 };
 #endif  // PHOTOLAB_VIEW_VIEW_H_

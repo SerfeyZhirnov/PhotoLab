@@ -8,8 +8,8 @@ class Model {
  public:
   void SetImage(const QImage &image) { m_original = m_filtered = image; }
   const QImage &GetOriginal() const { return m_original; }
-  const QImage &GetFiltered() const { return m_original; }
-  void Grayscale() { qDebug() << "Grayscale"; }
+  const QImage &GetFiltered() const { return m_filtered; }
+  void Grayscale();
   void Negative() { qDebug() << "Negative"; }
   void Toning() { qDebug() << "Toning"; }
 

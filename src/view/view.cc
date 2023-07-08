@@ -7,8 +7,11 @@ View::View(QWidget *parent)
       m_ui(new Ui::MainWindow),
       m_filters(new FiltersWindow) {
   m_ui->setupUi(this);
+  connect(this, &View::update_image, this, &View::on_imageUpdate);
   connect(m_filters, &FiltersWindow::filter_chosen, this,
           &View::on_btnGroupSent);
+  connect(m_filters, &FiltersWindow::filter_chosen, this,
+          [this]() { emit update_image(Image::Filtered); });
 }
 
 View::~View() {
@@ -18,12 +21,17 @@ View::~View() {
 
 void View::resizeEvent(QResizeEvent *event) {
   QMainWindow::resizeEvent(event);
-  UpdateLabelImage();
+  emit update_image(Image::Filtered);
 }
 
-void View::UpdateLabelImage() {
+void View::on_imageUpdate(View::Image choose) {
   QSize updated = m_ui->lb_image->size();
-  const QImage &image = m_controller.GetFiltered();
+
+  QImage &image = const_cast<QImage &>(m_controller.GetFiltered());
+  if (choose == Image::Original) {
+    image = const_cast<QImage &>(m_controller.GetOriginal());
+  }
+
   if (image.isNull()) {
     UpdateStatusBarMessage("Please, upload image!");
   } else {
@@ -47,7 +55,7 @@ void View::on_act_open_triggered() {
     const QImage &image = m_controller.GetOriginal();
     m_ui->lb_image->setMinimumHeight(image.height());
     m_ui->lb_image->setMinimumWidth(image.width());
-    UpdateLabelImage();
+    emit update_image(Image::Filtered);
     UpdateStatusBarMessage("Image uploaded successfully!");
   } else {
     UpdateStatusBarMessage("Image uploaded unsuccessfully!");
