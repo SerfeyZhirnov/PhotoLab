@@ -14,3 +14,18 @@ bool Controller::SetImage(const QString &filename) {
   m_model.SetImage(image);
   return true;
 }
+
+bool Controller::ApplyFilter(const QString &name) {
+  bool status = m_model.GetOriginal().isNull();
+  if (status) {
+    return false;
+  }
+
+  if (!association[name]) {
+    return false;
+  }
+
+  association[name]();
+
+  return true;
+}

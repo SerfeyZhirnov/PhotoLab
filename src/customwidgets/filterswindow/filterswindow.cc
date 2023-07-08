@@ -8,3 +8,7 @@ FiltersWindow::FiltersWindow(QWidget *parent)
 }
 
 FiltersWindow::~FiltersWindow() { delete ui; }
+
+void FiltersWindow::on_btn_group_buttonClicked(QAbstractButton *button) {
+  emit filter_chosen(button->text());
+}
