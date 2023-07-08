@@ -4,6 +4,7 @@
 #include <QDir>
 #include <QFileDialog>
 #include <QMainWindow>
+#include <QMouseEvent>
 #include <QResizeEvent>
 #include <QString>
 #include <QTimer>
@@ -25,6 +26,8 @@ class View : public QMainWindow {
 
  protected:
   void resizeEvent(QResizeEvent *) override;
+  void mousePressEvent(QMouseEvent *) override;
+  void mouseReleaseEvent(QMouseEvent *) override;
 
  private:
   Ui::MainWindow *m_ui;
@@ -35,6 +38,7 @@ class View : public QMainWindow {
   enum class Image { Original, Filtered };
 
   void UpdateStatusBarMessage(QString);
+
  private slots:
   void on_act_open_triggered();
   void on_act_default_triggered();

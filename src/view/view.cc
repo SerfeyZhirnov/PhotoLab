@@ -24,19 +24,17 @@ void View::resizeEvent(QResizeEvent *event) {
   emit update_image(Image::Filtered);
 }
 
-void View::on_imageUpdate(View::Image choose) {
-  QSize updated = m_ui->lb_image->size();
-
-  QImage &image = const_cast<QImage &>(m_controller.GetFiltered());
-  if (choose == Image::Original) {
-    image = const_cast<QImage &>(m_controller.GetOriginal());
+void View::mousePressEvent(QMouseEvent *event) {
+  QMainWindow::mousePressEvent(event);
+  if (event->button() == Qt::RightButton) {
+    emit update_image(Image::Original);
   }
+}
 
-  if (image.isNull()) {
-    UpdateStatusBarMessage("Please, upload image!");
-  } else {
-    QImage scaled = image.scaled(updated, Qt::KeepAspectRatio);
-    m_ui->lb_image->setPixmap(QPixmap::fromImage(scaled));
+void View::mouseReleaseEvent(QMouseEvent *event) {
+  QMainWindow::mouseReleaseEvent(event);
+  if (event->button() == Qt::RightButton) {
+    emit update_image(Image::Filtered);
   }
 }
 
@@ -71,5 +69,20 @@ void View::on_btnGroupSent(QString title) {
     UpdateStatusBarMessage("Filter successfully applied!");
   } else {
     UpdateStatusBarMessage("Image not loaded or non-existent filter selected!");
+  }
+}
+
+void View::on_imageUpdate(View::Image choose) {
+  QImage image = m_controller.GetFiltered();
+  if (choose == Image::Original) {
+    image = m_controller.GetOriginal();
+  }
+
+  if (image.isNull()) {
+    UpdateStatusBarMessage("Please, upload image!");
+  } else {
+    QSize updated = m_ui->lb_image->size();
+    QImage scaled = image.scaled(updated, Qt::KeepAspectRatio);
+    m_ui->lb_image->setPixmap(QPixmap::fromImage(scaled));
   }
 }
