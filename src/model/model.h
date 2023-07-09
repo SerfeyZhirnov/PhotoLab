@@ -3,6 +3,7 @@
 
 #include <QDebug>
 #include <QImage>
+#include <QVector>
 
 class Model {
  public:
@@ -12,10 +13,13 @@ class Model {
   void Grayscale();
   void Negative();
   void Toning(QColor &);
+  void Emboss();
 
  private:
   QImage m_original;
   QImage m_filtered;
+
+  void Convolution(const QVector<QVector<int>> &);
 };
 
 #endif  // PHOTOLAB_MODEL_MODEL_H_

@@ -68,7 +68,7 @@ void View::on_btnGroupSent(QString title) {
   if (status) {
     UpdateStatusBarMessage("Filter successfully applied!");
   } else {
-    UpdateStatusBarMessage("Image not loaded or non-existent filter selected!");
+    UpdateStatusBarMessage("Non-existent filter selected!");
   }
 }
 

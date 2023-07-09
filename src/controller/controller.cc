@@ -7,6 +7,7 @@ Controller::Controller() {
     QColor color = QColorDialog::getColor();
     m_model.Toning(color);
   };
+  m_association["Emboss"] = [&]() { m_model.Emboss(); };
 }
 
 bool Controller::SetImage(const QString &filename) {

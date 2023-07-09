@@ -7,13 +7,29 @@
     <x>0</x>
     <y>0</y>
     <width>277</width>
-    <height>429</height>
+    <height>444</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Filters</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QLabel" name="lb_simple">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>Simple filters</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
    <item>
     <widget class="QPushButton" name="btn_grayscale">
      <property name="text">
@@ -38,6 +54,102 @@
     <widget class="QPushButton" name="btn_toning">
      <property name="text">
       <string>Toning</string>
+     </property>
+     <attribute name="buttonGroup">
+      <string notr="true">btn_group</string>
+     </attribute>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="lb_convolution">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>Convolution filters</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="btn_emboss">
+     <property name="text">
+      <string>Emboss</string>
+     </property>
+     <attribute name="buttonGroup">
+      <string notr="true">btn_group</string>
+     </attribute>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="btn_sharpen">
+     <property name="text">
+      <string>Sharpen</string>
+     </property>
+     <attribute name="buttonGroup">
+      <string notr="true">btn_group</string>
+     </attribute>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="btn_box_blur">
+     <property name="text">
+      <string>Box blur</string>
+     </property>
+     <attribute name="buttonGroup">
+      <string notr="true">btn_group</string>
+     </attribute>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="btn_gaussian_blur">
+     <property name="text">
+      <string>Gaussian blur</string>
+     </property>
+     <attribute name="buttonGroup">
+      <string notr="true">btn_group</string>
+     </attribute>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="btn_laplacian_filter">
+     <property name="text">
+      <string>Laplacian filter</string>
+     </property>
+     <attribute name="buttonGroup">
+      <string notr="true">btn_group</string>
+     </attribute>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="btn_sobel_filter_left">
+     <property name="text">
+      <string>Sobel filter (left)</string>
+     </property>
+     <attribute name="buttonGroup">
+      <string notr="true">btn_group</string>
+     </attribute>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="btn_sobel_filter_right">
+     <property name="text">
+      <string>Sobel filter (right)</string>
+     </property>
+     <attribute name="buttonGroup">
+      <string notr="true">btn_group</string>
+     </attribute>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="btn_sobel_filter_full">
+     <property name="text">
+      <string>Sobel filter (left and right)</string>
      </property>
      <attribute name="buttonGroup">
       <string notr="true">btn_group</string>
