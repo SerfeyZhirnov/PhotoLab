@@ -1,5 +1,14 @@
 #include "controller.h"
 
+Controller::Controller() {
+  m_association["Grayscale"] = [&]() { m_model.Grayscale(); };
+  m_association["Negative"] = [&]() { m_model.Negative(); };
+  m_association["Toning"] = [&]() {
+    QColor color = QColorDialog::getColor();
+    m_model.Toning(color);
+  };
+}
+
 bool Controller::SetImage(const QString &filename) {
   if (filename.isEmpty()) {
     return false;
@@ -21,11 +30,11 @@ bool Controller::ApplyFilter(const QString &name) {
     return false;
   }
 
-  if (!association[name]) {
+  if (!m_association[name]) {
     return false;
   }
 
-  association[name]();
+  m_association[name]();
 
   return true;
 }

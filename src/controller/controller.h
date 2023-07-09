@@ -1,6 +1,7 @@
 #ifndef PHOTOLAB_CONTROLLER_CONTROLLER_H_
 #define PHOTOLAB_CONTROLLER_CONTROLLER_H_
 
+#include <QColorDialog>
 #include <QImage>
 #include <QMap>
 #include <QString>
@@ -10,6 +11,7 @@
 
 class Controller {
  public:
+  Controller();
   bool SetImage(const QString &filename);
   const QImage &GetOriginal() { return m_model.GetOriginal(); }
   const QImage &GetFiltered() { return m_model.GetFiltered(); }
@@ -17,10 +19,7 @@ class Controller {
 
  private:
   Model m_model;
-  const QMap<QString, std::function<void()>> association = {
-      {"Grayscale", [this]() { m_model.Grayscale(); }},
-      {"Negative", [this]() { m_model.Negative(); }},
-      {"Toning", [this]() { m_model.Toning(); }}};
+  QMap<QString, std::function<void()>> m_association;
 };
 
 #endif  // PHOTOLAB_CONTROLLER_CONTROLLER_H_

@@ -11,7 +11,7 @@ class Model {
   const QImage &GetFiltered() const { return m_filtered; }
   void Grayscale();
   void Negative();
-  void Toning() { qDebug() << "Toning"; }
+  void Toning(QColor &);
 
  private:
   QImage m_original;
