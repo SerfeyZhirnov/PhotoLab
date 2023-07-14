@@ -98,3 +98,8 @@ void Model::Emboss() {
   const QVector<QVector<double>> kernel{{-2, -1, 0}, {-1, 1, 1}, {0, 1, 2}};
   Convolution(kernel);
 }
+
+void Model::Sharpen() {
+  const QVector<QVector<double>> kernel{{0, -1, 0}, {-1, 5, -1}, {0, -1, 0}};
+  Convolution(kernel);
+}

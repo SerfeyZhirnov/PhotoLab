@@ -14,6 +14,7 @@ class Model {
   void Negative();
   void Toning(QColor &);
   void Emboss();
+  void Sharpen();
 
  private:
   QImage m_original;

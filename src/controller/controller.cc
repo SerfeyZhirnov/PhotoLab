@@ -8,6 +8,7 @@ Controller::Controller() {
     m_model.Toning(color);
   };
   m_association["Emboss"] = [&]() { m_model.Emboss(); };
+  m_association["Sharpen"] = [&]() { m_model.Sharpen(); };
 }
 
 bool Controller::SetImage(const QString &filename) {
