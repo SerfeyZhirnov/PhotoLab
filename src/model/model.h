@@ -19,7 +19,9 @@ class Model {
   QImage m_original;
   QImage m_filtered;
 
-  void Convolution(const QVector<QVector<int>> &);
+  constexpr inline void Convolution(const QVector<QVector<double>> &);
+  constexpr inline void CalculateColors(const QVector<QVector<double>> &, int &,
+                                        int &, int &, int &, int &);
 };
 
 #endif  // PHOTOLAB_MODEL_MODEL_H_
