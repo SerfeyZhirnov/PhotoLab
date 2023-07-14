@@ -15,6 +15,9 @@ class Model {
   void Toning(QColor &);
   void Emboss();
   void Sharpen();
+  void BoxBlur();
+  void GaussianBlur();
+  void LaplacianFilter();
 
  private:
   QImage m_original;

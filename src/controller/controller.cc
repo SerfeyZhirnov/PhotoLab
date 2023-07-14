@@ -9,6 +9,9 @@ Controller::Controller() {
   };
   m_association["Emboss"] = [&]() { m_model.Emboss(); };
   m_association["Sharpen"] = [&]() { m_model.Sharpen(); };
+  m_association["Box blur"] = [&]() { m_model.BoxBlur(); };
+  m_association["Gaussian blur"] = [&]() { m_model.GaussianBlur(); };
+  m_association["Laplacian filter"] = [&]() { m_model.LaplacianFilter(); };
 }
 
 bool Controller::SetImage(const QString &filename) {

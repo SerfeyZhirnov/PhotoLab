@@ -103,3 +103,26 @@ void Model::Sharpen() {
   const QVector<QVector<double>> kernel{{0, -1, 0}, {-1, 5, -1}, {0, -1, 0}};
   Convolution(kernel);
 }
+
+void Model::BoxBlur() {
+  const double value = 1. / 9.;
+  const QVector<QVector<double>> kernel{
+      {value, value, value}, {value, value, value}, {value, value, value}};
+  Convolution(kernel);
+}
+
+void Model::GaussianBlur() {
+  const double value1 = 1. / 16.;
+  const double value2 = 1. / 8.;
+  const double value3 = 1. / 4.;
+  const QVector<QVector<double>> kernel{{value1, value2, value1},
+                                        {value2, value3, value2},
+                                        {value1, value2, value1}};
+  Convolution(kernel);
+}
+
+void Model::LaplacianFilter() {
+  const QVector<QVector<double>> kernel{
+      {-1, -1, -1}, {-1, 8, -1}, {-1, -1, -1}};
+  Convolution(kernel);
+}
