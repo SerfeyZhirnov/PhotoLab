@@ -8,11 +8,12 @@
 class Model {
  public:
   void SetImage(const QImage &image) { m_original = m_filtered = image; }
+  void SetColor(const QColor &color) { m_custom_color = color; }
   const QImage &GetOriginal() const { return m_original; }
   const QImage &GetFiltered() const { return m_filtered; }
   void Grayscale();
   void Negative();
-  void Toning(QColor &);
+  void Toning();
   void Emboss();
   void Sharpen();
   void BoxBlur();
@@ -25,6 +26,7 @@ class Model {
  private:
   QImage m_original;
   QImage m_filtered;
+  QColor m_custom_color;
 
   constexpr inline void Convolution(const QVector<QVector<double>> &);
   constexpr inline void CalculateColors(const QVector<QVector<double>> &, int &,

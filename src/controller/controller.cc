@@ -4,8 +4,8 @@ Controller::Controller() {
   m_association["Grayscale"] = [&]() { m_model.Grayscale(); };
   m_association["Negative"] = [&]() { m_model.Negative(); };
   m_association["Toning"] = [&]() {
-    QColor color = QColorDialog::getColor();
-    m_model.Toning(color);
+    emit need_color();
+    m_model.Toning();
   };
   m_association["Emboss"] = [&]() { m_model.Emboss(); };
   m_association["Sharpen"] = [&]() { m_model.Sharpen(); };
@@ -30,6 +30,14 @@ bool Controller::SetImage(const QString &filename) {
 
   m_model.SetImage(image);
   return true;
+}
+
+void Controller::SetColor(const QColor &color) {
+  if (color.isValid()) {
+    m_model.SetColor(color);
+  } else {
+    m_model.SetColor(Qt::white);
+  }
 }
 
 bool Controller::ApplyFilter(const QString &name) {

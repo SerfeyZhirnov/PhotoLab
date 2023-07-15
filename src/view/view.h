@@ -1,6 +1,7 @@
 #ifndef PHOTOLAB_VIEW_VIEW_H_
 #define PHOTOLAB_VIEW_VIEW_H_
 
+#include <QColorDialog>
 #include <QDir>
 #include <QFileDialog>
 #include <QMainWindow>
@@ -44,6 +45,7 @@ class View : public QMainWindow {
   void on_act_default_triggered();
   void on_btnGroupSent(QString);
   void on_imageUpdate(View::Image);
+  void on_colorNeed();
 
  signals:
   void update_image(View::Image);

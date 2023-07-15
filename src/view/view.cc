@@ -7,6 +7,7 @@ View::View(QWidget *parent)
       m_ui(new Ui::MainWindow),
       m_filters(new FiltersWindow) {
   m_ui->setupUi(this);
+  connect(&m_controller, &Controller::need_color, this, &View::on_colorNeed);
   connect(this, &View::update_image, this, &View::on_imageUpdate);
   connect(m_filters, &FiltersWindow::filter_chosen, this,
           &View::on_btnGroupSent);
@@ -85,4 +86,10 @@ void View::on_imageUpdate(View::Image choose) {
     QImage scaled = image.scaled(updated, Qt::KeepAspectRatio);
     m_ui->lb_image->setPixmap(QPixmap::fromImage(scaled));
   }
+}
+
+void View::on_colorNeed() {
+  QColor color = QColorDialog::getColor();
+
+  m_controller.SetColor(color);
 }

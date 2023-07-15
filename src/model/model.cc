@@ -31,18 +31,14 @@ void Model::Negative() {
   }
 }
 
-void Model::Toning(QColor &color) {
-  if (!color.isValid()) {
-    color = Qt::white;
-  }
-
+void Model::Toning() {
   for (int x = 0; x < m_filtered.width(); ++x) {
     for (int y = 0; y < m_filtered.height(); ++y) {
       QColor pixel = m_original.pixel(x, y);
 
-      int red = (pixel.red() * color.red()) / 255;
-      int green = (pixel.green() * color.green()) / 255;
-      int blue = (pixel.blue() * color.blue()) / 255;
+      int red = (pixel.red() * m_custom_color.red()) / 255;
+      int green = (pixel.green() * m_custom_color.green()) / 255;
+      int blue = (pixel.blue() * m_custom_color.blue()) / 255;
       QRgb changed = qRgb(red, green, blue);
 
       m_filtered.setPixel(x, y, changed);
