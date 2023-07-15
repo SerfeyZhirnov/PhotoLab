@@ -42,6 +42,7 @@ class View : public QMainWindow {
 
  private slots:
   void on_act_open_triggered();
+  void on_act_save_triggered();
   void on_act_default_triggered();
   void on_btnGroupSent(QString);
   void on_imageUpdate(View::Image);

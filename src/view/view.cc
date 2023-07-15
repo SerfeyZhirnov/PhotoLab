@@ -46,8 +46,8 @@ void View::UpdateStatusBarMessage(QString message) {
 }
 
 void View::on_act_open_triggered() {
-  QString filename = QFileDialog::getOpenFileName(
-      this, "Choose file", QDir::currentPath(), "BMP (*.bmp)");
+  const QString filename = QFileDialog::getOpenFileName(
+      this, "Choose Image", QDir::homePath(), "BMP Files (*.bmp)");
 
   bool status = m_controller.SetImage(filename);
   if (status) {
@@ -58,6 +58,27 @@ void View::on_act_open_triggered() {
     UpdateStatusBarMessage("Image uploaded successfully!");
   } else {
     UpdateStatusBarMessage("Image uploaded unsuccessfully!");
+  }
+}
+
+void View::on_act_save_triggered() {
+  const QImage &image = m_controller.GetFiltered();
+  if (image.isNull()) {
+    UpdateStatusBarMessage("Image was not loaded!");
+  } else {
+    const QString filename = QFileDialog::getSaveFileName(
+        this, "Save Image", QDir::homePath(), "BMP Files (*.bmp)");
+
+    if (filename.isEmpty()) {
+      UpdateStatusBarMessage("Saving cancelled by the user!");
+    } else {
+      bool saved = image.save(filename, "BMP");
+      if (saved) {
+        UpdateStatusBarMessage("Image saved successfully to BMP!");
+      } else {
+        UpdateStatusBarMessage("Failed to save image as BMP!");
+      }
+    }
   }
 }
 
