@@ -126,3 +126,32 @@ void Model::LaplacianFilter() {
       {-1, -1, -1}, {-1, 8, -1}, {-1, -1, -1}};
   Convolution(kernel);
 }
+
+void Model::SobelLeft() {
+  const QVector<QVector<double>> kernel{{1, 0, -1}, {2, 0, -2}, {1, 0, -1}};
+  Convolution(kernel);
+}
+
+void Model::SobelRight() {
+  const QVector<QVector<double>> kernel{{-1, 0, 1}, {-2, 0, 2}, {-1, 0, 1}};
+  Convolution(kernel);
+}
+
+constexpr void Model::Overlap(const QImage &image) {
+  for (int x = 0; x < m_filtered.width(); ++x) {
+    for (int y = 0; y < m_filtered.height(); ++y) {
+      QRgb first = m_filtered.pixel(x, y);
+      QRgb second = image.pixel(x, y);
+      QRgb changed = first + second;
+
+      m_filtered.setPixel(x, y, changed);
+    }
+  }
+}
+
+void Model::SobelFull() {
+  SobelLeft();
+  const QImage buf = m_filtered;
+  SobelRight();
+  Overlap(buf);
+}

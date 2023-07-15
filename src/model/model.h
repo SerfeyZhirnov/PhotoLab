@@ -18,6 +18,9 @@ class Model {
   void BoxBlur();
   void GaussianBlur();
   void LaplacianFilter();
+  void SobelLeft();
+  void SobelRight();
+  void SobelFull();
 
  private:
   QImage m_original;
@@ -26,6 +29,7 @@ class Model {
   constexpr inline void Convolution(const QVector<QVector<double>> &);
   constexpr inline void CalculateColors(const QVector<QVector<double>> &, int &,
                                         int &, int &, int &, int &);
+  constexpr inline void Overlap(const QImage &);
 };
 
 #endif  // PHOTOLAB_MODEL_MODEL_H_

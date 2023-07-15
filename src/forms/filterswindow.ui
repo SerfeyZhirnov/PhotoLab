@@ -119,7 +119,7 @@
    <item>
     <widget class="QPushButton" name="btn_laplacian_filter">
      <property name="text">
-      <string>Laplacian filter</string>
+      <string>Laplacian</string>
      </property>
      <attribute name="buttonGroup">
       <string notr="true">btn_group</string>
@@ -129,7 +129,7 @@
    <item>
     <widget class="QPushButton" name="btn_sobel_filter_left">
      <property name="text">
-      <string>Sobel filter (left)</string>
+      <string>Sobel left</string>
      </property>
      <attribute name="buttonGroup">
       <string notr="true">btn_group</string>
@@ -139,7 +139,7 @@
    <item>
     <widget class="QPushButton" name="btn_sobel_filter_right">
      <property name="text">
-      <string>Sobel filter (right)</string>
+      <string>Sobel right</string>
      </property>
      <attribute name="buttonGroup">
       <string notr="true">btn_group</string>
@@ -149,7 +149,7 @@
    <item>
     <widget class="QPushButton" name="btn_sobel_filter_full">
      <property name="text">
-      <string>Sobel filter (left and right)</string>
+      <string>Sobel full</string>
      </property>
      <attribute name="buttonGroup">
       <string notr="true">btn_group</string>

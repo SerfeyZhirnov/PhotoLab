@@ -11,7 +11,10 @@ Controller::Controller() {
   m_association["Sharpen"] = [&]() { m_model.Sharpen(); };
   m_association["Box blur"] = [&]() { m_model.BoxBlur(); };
   m_association["Gaussian blur"] = [&]() { m_model.GaussianBlur(); };
-  m_association["Laplacian filter"] = [&]() { m_model.LaplacianFilter(); };
+  m_association["Laplacian"] = [&]() { m_model.LaplacianFilter(); };
+  m_association["Sobel left"] = [&]() { m_model.SobelLeft(); };
+  m_association["Sobel right"] = [&]() { m_model.SobelRight(); };
+  m_association["Sobel full"] = [&]() { m_model.SobelFull(); };
 }
 
 bool Controller::SetImage(const QString &filename) {
