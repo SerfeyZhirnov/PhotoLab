@@ -49,14 +49,14 @@ void Model::Toning() {
 constexpr void Model::Convolution(const QVector<QVector<double>> &kernel) {
   for (int x = 0; x < m_filtered.width(); ++x) {
     for (int y = 0; y < m_filtered.height(); ++y) {
-      int R = 0, G = 0, B = 0;
+      int red = 0, green = 0, blue = 0;
 
-      CalculateColors(kernel, x, y, R, G, B);
+      CalculateColors(kernel, x, y, red, green, blue);
 
-      R = qBound(0, R, 255);
-      G = qBound(0, G, 255);
-      B = qBound(0, B, 255);
-      QRgb changed = qRgb(R, G, B);
+      red = qBound(0, red, 255);
+      green = qBound(0, green, 255);
+      blue = qBound(0, blue, 255);
+      QRgb changed = qRgb(red, green, blue);
 
       m_filtered.setPixel(x, y, changed);
     }
@@ -64,7 +64,8 @@ constexpr void Model::Convolution(const QVector<QVector<double>> &kernel) {
 }
 
 constexpr void Model::CalculateColors(const QVector<QVector<double>> &kernel,
-                                      int &x, int &y, int &R, int &G, int &B) {
+                                      int &x, int &y, int &red, int &green,
+                                      int &blue) {
   const int kernel_size = kernel.size();
 
   for (int i = 0; i < kernel_size; ++i) {
@@ -83,9 +84,9 @@ constexpr void Model::CalculateColors(const QVector<QVector<double>> &kernel,
 
       double kernel_val = kernel[i][j];
       QColor pixel = m_original.pixel(pixel_pos_x, pixel_pos_y);
-      R += static_cast<int>(pixel.red() * kernel_val);
-      G += static_cast<int>(pixel.green() * kernel_val);
-      B += static_cast<int>(pixel.blue() * kernel_val);
+      red += static_cast<int>(pixel.red() * kernel_val);
+      green += static_cast<int>(pixel.green() * kernel_val);
+      blue += static_cast<int>(pixel.blue() * kernel_val);
     }
   }
 }
@@ -150,4 +151,43 @@ void Model::SobelFull() {
   const QImage buf = m_filtered;
   SobelRight();
   Overlap(buf);
+}
+
+void Model::Brightness() {
+  for (int x = 0; x < m_original.width(); ++x) {
+    for (int y = 0; y < m_original.height(); ++y) {
+      QColor pixel = m_original.pixel(x, y);
+
+      int red = qBound(0, pixel.red() + m_brightness, 255);
+      int green = qBound(0, pixel.green() + m_brightness, 255);
+      int blue = qBound(0, pixel.blue() + m_brightness, 255);
+
+      QRgb changed = qRgb(red, green, blue);
+      m_filtered.setPixel(x, y, changed);
+    }
+  }
+}
+
+constexpr int Model::ApplyContrast(int color) {
+  double result = static_cast<double>(color) / 255.0;
+  result -= 0.5;
+  result *= m_contrast;
+  result += 0.5;
+  result *= 255.0;
+  return qBound(0, static_cast<int>(result), 255);
+}
+
+void Model::Contrast() {
+  for (int x = 0; x < m_original.width(); ++x) {
+    for (int y = 0; y < m_original.height(); ++y) {
+      QColor pixel = m_original.pixel(x, y);
+
+      int red = ApplyContrast(pixel.red());
+      int green = ApplyContrast(pixel.green());
+      int blue = ApplyContrast(pixel.blue());
+
+      QRgb changed = qRgb(red, green, blue);
+      m_filtered.setPixel(x, y, changed);
+    }
+  }
 }
