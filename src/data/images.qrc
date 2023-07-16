@@ -1,0 +1,15 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>images/box_blur.bmp</file>
+        <file>images/emboss.bmp</file>
+        <file>images/gaussian_blur.bmp</file>
+        <file>images/grayscale.bmp</file>
+        <file>images/laplacian.bmp</file>
+        <file>images/negative.bmp</file>
+        <file>images/sharpen.bmp</file>
+        <file>images/sobel_full.bmp</file>
+        <file>images/sobel_left.bmp</file>
+        <file>images/sobel_right.bmp</file>
+        <file>images/toning.bmp</file>
+    </qresource>
+</RCC>

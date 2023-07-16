@@ -1,6 +1,7 @@
 #ifndef PHOTOLAB_VIEW_VIEW_H_
 #define PHOTOLAB_VIEW_VIEW_H_
 
+#include <QAbstractButton>
 #include <QColorDialog>
 #include <QDir>
 #include <QFileDialog>
@@ -11,7 +12,6 @@
 #include <QTimer>
 
 #include "controller.h"
-#include "filterswindow.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -32,7 +32,6 @@ class View : public QMainWindow {
 
  private:
   Ui::MainWindow *m_ui;
-  FiltersWindow *m_filters;
   Controller m_controller;
 
   const int m_display_time = 10000;
@@ -43,12 +42,13 @@ class View : public QMainWindow {
  private slots:
   void on_act_open_triggered();
   void on_act_save_triggered();
-  void on_act_default_triggered();
   void on_btnGroupSent(QString);
   void on_imageUpdate(View::Image);
   void on_colorNeed();
+  void on_btn_group_buttonClicked(QAbstractButton *);
 
  signals:
   void update_image(View::Image);
+  void filter_chosen(QString);
 };
 #endif  // PHOTOLAB_VIEW_VIEW_H_

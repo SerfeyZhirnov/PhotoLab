@@ -2,23 +2,16 @@
 
 #include "ui_mainwindow.h"
 
-View::View(QWidget *parent)
-    : QMainWindow(parent),
-      m_ui(new Ui::MainWindow),
-      m_filters(new FiltersWindow) {
+View::View(QWidget *parent) : QMainWindow(parent), m_ui(new Ui::MainWindow) {
   m_ui->setupUi(this);
   connect(&m_controller, &Controller::need_color, this, &View::on_colorNeed);
   connect(this, &View::update_image, this, &View::on_imageUpdate);
-  connect(m_filters, &FiltersWindow::filter_chosen, this,
-          &View::on_btnGroupSent);
-  connect(m_filters, &FiltersWindow::filter_chosen, this,
+  connect(this, &View::filter_chosen, this, &View::on_btnGroupSent);
+  connect(this, &View::filter_chosen, this,
           [this]() { emit update_image(Image::Filtered); });
 }
 
-View::~View() {
-  delete m_ui;
-  delete m_filters;
-}
+View::~View() { delete m_ui; }
 
 void View::resizeEvent(QResizeEvent *event) {
   QMainWindow::resizeEvent(event);
@@ -82,8 +75,6 @@ void View::on_act_save_triggered() {
   }
 }
 
-void View::on_act_default_triggered() { m_filters->show(); }
-
 void View::on_btnGroupSent(QString title) {
   bool status = m_controller.ApplyFilter(title);
 
@@ -113,4 +104,8 @@ void View::on_colorNeed() {
   QColor color = QColorDialog::getColor();
 
   m_controller.SetColor(color);
+}
+
+void View::on_btn_group_buttonClicked(QAbstractButton *button) {
+  emit filter_chosen(button->whatsThis());
 }

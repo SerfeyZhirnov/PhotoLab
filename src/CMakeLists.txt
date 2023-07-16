@@ -13,33 +13,31 @@ find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
 
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 
-
 include_directories(
     ${CMAKE_SOURCE_DIR}/model
     ${CMAKE_SOURCE_DIR}/view
     ${CMAKE_SOURCE_DIR}/controller
-    ${CMAKE_SOURCE_DIR}/customwidgets/filterswindow
 )
 
 set(HEADERS
     ${CMAKE_SOURCE_DIR}/model/model.h
     ${CMAKE_SOURCE_DIR}/view/view.h
     ${CMAKE_SOURCE_DIR}/controller/controller.h
-    ${CMAKE_SOURCE_DIR}/customwidgets/filterswindow/filterswindow.h
 )
 
 set(SOURCES
     ${CMAKE_SOURCE_DIR}/model/model.cc
     ${CMAKE_SOURCE_DIR}/view/view.cc
     ${CMAKE_SOURCE_DIR}/controller/controller.cc
-    ${CMAKE_SOURCE_DIR}/customwidgets/filterswindow/filterswindow.cc
 )
 
 set(FORMS 
     ${CMAKE_SOURCE_DIR}/forms/mainwindow.ui
-    ${CMAKE_SOURCE_DIR}/forms/filterswindow.ui 
 )
 set(CMAKE_AUTOUIC_SEARCH_PATHS forms)
+
+set(RESOURCE_FILE ${CMAKE_SOURCE_DIR}/data/images.qrc)
+qt_add_resources(RESOURCE_ADDED ${RESOURCE_FILE})
 
 set(PROJECT_SOURCES
     ${HEADERS}
@@ -58,6 +56,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(${PROJECT_NAME}
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
+        ${RESOURCE_ADDED}
         ${app_icon_macos}
     )
 else()

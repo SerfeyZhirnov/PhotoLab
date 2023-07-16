@@ -6,16 +6,16 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>896</width>
+    <height>869</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>PhotoLab</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="0">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
      <widget class="QLabel" name="lb_image">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
@@ -42,6 +42,324 @@
       </property>
      </widget>
     </item>
+    <item>
+     <widget class="QScrollArea" name="sa_filters">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="widgetResizable">
+       <bool>true</bool>
+      </property>
+      <widget class="QWidget" name="sa_content_widget">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>1380</width>
+         <height>124</height>
+        </rect>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <item>
+         <widget class="QLabel" name="lb_simple">
+          <property name="text">
+           <string>TextLabel</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="bt_grayscale">
+          <property name="whatsThis">
+           <string>Grayscale</string>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">border: 0</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset>
+            <normaloff>:/images/images/gaussian_blur.bmp</normaloff>:/images/images/gaussian_blur.bmp</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>100</width>
+            <height>100</height>
+           </size>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">btn_group</string>
+          </attribute>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="bt_negative">
+          <property name="whatsThis">
+           <string>Negative</string>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">border: 0</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset>
+            <normaloff>:/images/images/negative.bmp</normaloff>:/images/images/negative.bmp</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>100</width>
+            <height>100</height>
+           </size>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">btn_group</string>
+          </attribute>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="bt_toning">
+          <property name="whatsThis">
+           <string>Toning</string>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">border: 0</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset>
+            <normaloff>:/images/images/toning.bmp</normaloff>:/images/images/toning.bmp</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>100</width>
+            <height>100</height>
+           </size>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">btn_group</string>
+          </attribute>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="bt_emboss">
+          <property name="whatsThis">
+           <string>Emboss</string>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">border: 0</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset>
+            <normaloff>:/images/images/emboss.bmp</normaloff>:/images/images/emboss.bmp</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>100</width>
+            <height>100</height>
+           </size>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">btn_group</string>
+          </attribute>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="bt_sharpen">
+          <property name="whatsThis">
+           <string>Sharpen</string>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">border: 0</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset>
+            <normaloff>:/images/images/sharpen.bmp</normaloff>:/images/images/sharpen.bmp</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>100</width>
+            <height>100</height>
+           </size>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">btn_group</string>
+          </attribute>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="bt_box_blur">
+          <property name="whatsThis">
+           <string>Box blur</string>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">border: 0</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset>
+            <normaloff>:/images/images/box_blur.bmp</normaloff>:/images/images/box_blur.bmp</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>100</width>
+            <height>100</height>
+           </size>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">btn_group</string>
+          </attribute>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="bt_gaussian_blur">
+          <property name="whatsThis">
+           <string>Gaussian blur</string>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">border: 0</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset>
+            <normaloff>:/images/images/gaussian_blur.bmp</normaloff>:/images/images/gaussian_blur.bmp</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>100</width>
+            <height>100</height>
+           </size>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">btn_group</string>
+          </attribute>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="bt_laplacian">
+          <property name="whatsThis">
+           <string>Laplacian</string>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">border: 0</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset>
+            <normaloff>:/images/images/laplacian.bmp</normaloff>:/images/images/laplacian.bmp</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>100</width>
+            <height>100</height>
+           </size>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">btn_group</string>
+          </attribute>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="bt_sobel_left">
+          <property name="whatsThis">
+           <string>Sobel left</string>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">border: 0</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset>
+            <normaloff>:/images/images/sobel_left.bmp</normaloff>:/images/images/sobel_left.bmp</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>100</width>
+            <height>100</height>
+           </size>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">btn_group</string>
+          </attribute>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="bt_sobel_right">
+          <property name="whatsThis">
+           <string>Sobel right</string>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">border: 0</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset>
+            <normaloff>:/images/images/sobel_right.bmp</normaloff>:/images/images/sobel_right.bmp</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>100</width>
+            <height>100</height>
+           </size>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">btn_group</string>
+          </attribute>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="bt_sobel_full">
+          <property name="whatsThis">
+           <string>Sobel full</string>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">border: 0</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset>
+            <normaloff>:/images/images/sobel_full.bmp</normaloff>:/images/images/sobel_full.bmp</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>100</width>
+            <height>100</height>
+           </size>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">btn_group</string>
+          </attribute>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
    </layout>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -49,7 +367,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>896</width>
      <height>24</height>
     </rect>
    </property>
@@ -88,4 +406,7 @@
  </widget>
  <resources/>
  <connections/>
+ <buttongroups>
+  <buttongroup name="btn_group"/>
+ </buttongroups>
 </ui>
