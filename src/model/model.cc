@@ -46,26 +46,8 @@ void Model::Toning() {
   }
 }
 
-constexpr void Model::Convolution(const QVector<QVector<double>> &kernel) {
-  for (int x = 0; x < m_filtered.width(); ++x) {
-    for (int y = 0; y < m_filtered.height(); ++y) {
-      int red = 0, green = 0, blue = 0;
-
-      CalculateColors(kernel, x, y, red, green, blue);
-
-      red = qBound(0, red, 255);
-      green = qBound(0, green, 255);
-      blue = qBound(0, blue, 255);
-      QRgb changed = qRgb(red, green, blue);
-
-      m_filtered.setPixel(x, y, changed);
-    }
-  }
-}
-
-constexpr void Model::CalculateColors(const QVector<QVector<double>> &kernel,
-                                      int &x, int &y, int &red, int &green,
-                                      int &blue) {
+void Model::CalculateColors(const QVector<QVector<double>> &kernel, int &x,
+                            int &y, int &red, int &green, int &blue) {
   const int kernel_size = kernel.size();
 
   for (int i = 0; i < kernel_size; ++i) {
@@ -87,6 +69,23 @@ constexpr void Model::CalculateColors(const QVector<QVector<double>> &kernel,
       red += static_cast<int>(pixel.red() * kernel_val);
       green += static_cast<int>(pixel.green() * kernel_val);
       blue += static_cast<int>(pixel.blue() * kernel_val);
+    }
+  }
+}
+
+void Model::Convolution(const QVector<QVector<double>> &kernel) {
+  for (int x = 0; x < m_filtered.width(); ++x) {
+    for (int y = 0; y < m_filtered.height(); ++y) {
+      int red = 0, green = 0, blue = 0;
+
+      CalculateColors(kernel, x, y, red, green, blue);
+
+      red = qBound(0, red, 255);
+      green = qBound(0, green, 255);
+      blue = qBound(0, blue, 255);
+      QRgb changed = qRgb(red, green, blue);
+
+      m_filtered.setPixel(x, y, changed);
     }
   }
 }
@@ -134,7 +133,7 @@ void Model::SobelRight() {
   Convolution(kernel);
 }
 
-constexpr void Model::Overlap(const QImage &image) {
+void Model::Overlap(const QImage &image) {
   for (int x = 0; x < m_filtered.width(); ++x) {
     for (int y = 0; y < m_filtered.height(); ++y) {
       QRgb first = m_filtered.pixel(x, y);

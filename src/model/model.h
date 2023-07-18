@@ -36,10 +36,10 @@ class Model {
   int m_brightness;
   double m_contrast;
 
-  constexpr inline void Convolution(const QVector<QVector<double>> &);
-  constexpr inline void CalculateColors(const QVector<QVector<double>> &, int &,
-                                        int &, int &, int &, int &);
-  constexpr inline void Overlap(const QImage &);
+  inline void CalculateColors(const QVector<QVector<double>> &, int &, int &,
+                              int &, int &, int &);
+  inline void Convolution(const QVector<QVector<double>> &);
+  inline void Overlap(const QImage &);
   constexpr inline int ApplyContrast(int);
 };
 
