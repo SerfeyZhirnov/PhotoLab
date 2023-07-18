@@ -82,8 +82,8 @@
            <string/>
           </property>
           <property name="icon">
-           <iconset>
-            <normaloff>:/images/images/gaussian_blur.bmp</normaloff>:/images/images/gaussian_blur.bmp</iconset>
+           <iconset resource="../data/images.qrc">
+            <normaloff>:/images/images/grayscale.bmp</normaloff>:/images/images/grayscale.bmp</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -108,7 +108,7 @@
            <string/>
           </property>
           <property name="icon">
-           <iconset>
+           <iconset resource="../data/images.qrc">
             <normaloff>:/images/images/negative.bmp</normaloff>:/images/images/negative.bmp</iconset>
           </property>
           <property name="iconSize">
@@ -134,7 +134,7 @@
            <string/>
           </property>
           <property name="icon">
-           <iconset>
+           <iconset resource="../data/images.qrc">
             <normaloff>:/images/images/toning.bmp</normaloff>:/images/images/toning.bmp</iconset>
           </property>
           <property name="iconSize">
@@ -160,7 +160,7 @@
            <string/>
           </property>
           <property name="icon">
-           <iconset>
+           <iconset resource="../data/images.qrc">
             <normaloff>:/images/images/emboss.bmp</normaloff>:/images/images/emboss.bmp</iconset>
           </property>
           <property name="iconSize">
@@ -186,7 +186,7 @@
            <string/>
           </property>
           <property name="icon">
-           <iconset>
+           <iconset resource="../data/images.qrc">
             <normaloff>:/images/images/sharpen.bmp</normaloff>:/images/images/sharpen.bmp</iconset>
           </property>
           <property name="iconSize">
@@ -212,7 +212,7 @@
            <string/>
           </property>
           <property name="icon">
-           <iconset>
+           <iconset resource="../data/images.qrc">
             <normaloff>:/images/images/box_blur.bmp</normaloff>:/images/images/box_blur.bmp</iconset>
           </property>
           <property name="iconSize">
@@ -238,7 +238,7 @@
            <string/>
           </property>
           <property name="icon">
-           <iconset>
+           <iconset resource="../data/images.qrc">
             <normaloff>:/images/images/gaussian_blur.bmp</normaloff>:/images/images/gaussian_blur.bmp</iconset>
           </property>
           <property name="iconSize">
@@ -264,7 +264,7 @@
            <string/>
           </property>
           <property name="icon">
-           <iconset>
+           <iconset resource="../data/images.qrc">
             <normaloff>:/images/images/laplacian.bmp</normaloff>:/images/images/laplacian.bmp</iconset>
           </property>
           <property name="iconSize">
@@ -290,7 +290,7 @@
            <string/>
           </property>
           <property name="icon">
-           <iconset>
+           <iconset resource="../data/images.qrc">
             <normaloff>:/images/images/sobel_left.bmp</normaloff>:/images/images/sobel_left.bmp</iconset>
           </property>
           <property name="iconSize">
@@ -316,7 +316,7 @@
            <string/>
           </property>
           <property name="icon">
-           <iconset>
+           <iconset resource="../data/images.qrc">
             <normaloff>:/images/images/sobel_right.bmp</normaloff>:/images/images/sobel_right.bmp</iconset>
           </property>
           <property name="iconSize">
@@ -342,7 +342,7 @@
            <string/>
           </property>
           <property name="icon">
-           <iconset>
+           <iconset resource="../data/images.qrc">
             <normaloff>:/images/images/sobel_full.bmp</normaloff>:/images/images/sobel_full.bmp</iconset>
           </property>
           <property name="iconSize">
@@ -404,7 +404,9 @@
    </property>
   </action>
  </widget>
- <resources/>
+ <resources>
+  <include location="../data/images.qrc"/>
+ </resources>
  <connections/>
  <buttongroups>
   <buttongroup name="btn_group"/>
