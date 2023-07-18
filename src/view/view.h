@@ -8,6 +8,7 @@
 #include <QMainWindow>
 #include <QMouseEvent>
 #include <QResizeEvent>
+#include <QStandardItemModel>
 #include <QString>
 #include <QTimer>
 
@@ -46,6 +47,8 @@ class View : public QMainWindow {
   void on_imageUpdate(View::Image);
   void on_colorNeed();
   void on_btn_group_buttonClicked(QAbstractButton *);
+
+  void on_pushButton_clicked();
 
  signals:
   void update_image(View::Image);

@@ -109,3 +109,22 @@ void View::on_colorNeed() {
 void View::on_btn_group_buttonClicked(QAbstractButton *button) {
   emit filter_chosen(button->whatsThis());
 }
+
+void View::on_pushButton_clicked() {
+  QStandardItemModel *model = new QStandardItemModel(3, 3, this);
+
+  model->setHorizontalHeaderLabels(QStringList() << "1"
+                                                 << "2"
+                                                 << "3");
+
+  m_ui->tableView->setModel(model);
+
+  for (int row = 0; row < 3; ++row) {
+    for (int col = 0; col < 3; ++col) {
+      QStandardItem *item = new QStandardItem();
+      item->setData(0.0, Qt::EditRole);
+      model->setItem(row, col, item);
+    }
+  }
+  m_ui->tableView->resizeColumnsToContents();
+}

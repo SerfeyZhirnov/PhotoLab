@@ -14,8 +14,8 @@
    <string>PhotoLab</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QVBoxLayout" name="verticalLayout">
-    <item>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
      <widget class="QLabel" name="lb_image">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
@@ -42,7 +42,7 @@
       </property>
      </widget>
     </item>
-    <item>
+    <item row="1" column="0">
      <widget class="QScrollArea" name="sa_filters">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
@@ -360,6 +360,16 @@
       </widget>
      </widget>
     </item>
+    <item row="0" column="1">
+     <widget class="QTableView" name="tableView"/>
+    </item>
+    <item row="1" column="1">
+     <widget class="QPushButton" name="pushButton">
+      <property name="text">
+       <string>PushButton</string>
+      </property>
+     </widget>
+    </item>
    </layout>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -378,24 +388,12 @@
     <addaction name="act_open"/>
     <addaction name="act_save"/>
    </widget>
-   <widget class="QMenu" name="mn_filters">
-    <property name="title">
-     <string>Filters</string>
-    </property>
-    <addaction name="act_default"/>
-   </widget>
    <addaction name="mn_file"/>
-   <addaction name="mn_filters"/>
   </widget>
   <widget class="QStatusBar" name="status_bar"/>
   <action name="act_open">
    <property name="text">
     <string>Open</string>
-   </property>
-  </action>
-  <action name="act_default">
-   <property name="text">
-    <string>Default</string>
    </property>
   </action>
   <action name="act_save">
