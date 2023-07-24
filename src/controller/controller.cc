@@ -19,6 +19,8 @@ Controller::Controller() {
     emit need_kernel();
     m_model.Custom();
   };
+  m_association["Brightness"] = [&]() { m_model.Brightness(); };
+  m_association["Contrast"] = [&]() { m_model.Contrast(); };
 }
 
 bool Controller::SetImage(const QString &filename) {

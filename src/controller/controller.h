@@ -18,6 +18,8 @@ class Controller : public QObject {
   void SetKernel(const QVector<QVector<double>> &kernel) {
     m_model.SetKernel(kernel);
   }
+  void SetBrightness(const int &value) { m_model.SetBrightness(value); }
+  void SetContrast(const int &value) { m_model.SetContrast(value); }
   const QImage &GetOriginal() { return m_model.GetOriginal(); }
   const QImage &GetFiltered() { return m_model.GetFiltered(); }
   bool ApplyFilter(const QString &);

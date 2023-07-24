@@ -11,6 +11,14 @@ View::View(QWidget *parent) : QMainWindow(parent), m_ui(new Ui::MainWindow) {
   connect(this, &View::filter_chosen, this, &View::on_btnGroupSent);
   connect(this, &View::filter_chosen, this,
           [this]() { emit update_image(Image::Filtered); });
+  connect(m_ui->hs_brightness, &QSlider::valueChanged, m_ui->sb_brightness,
+          &QSpinBox::setValue);
+  connect(m_ui->sb_brightness, &QSpinBox::valueChanged, m_ui->hs_brightness,
+          &QSlider::setValue);
+  connect(m_ui->hs_contrast, &QSlider::valueChanged, m_ui->sb_contrast,
+          &QSpinBox::setValue);
+  connect(m_ui->sb_contrast, &QSpinBox::valueChanged, m_ui->hs_contrast,
+          &QSlider::setValue);
 }
 
 View::~View() { delete m_ui; }
@@ -159,4 +167,14 @@ void View::on_kernelNeed() {
   }
 
   m_controller.SetKernel(result);
+}
+
+void View::on_sb_brightness_valueChanged(int value) {
+  m_controller.SetBrightness(value);
+  emit filter_chosen(m_ui->sb_brightness->whatsThis());
+}
+
+void View::on_sb_contrast_valueChanged(int value) {
+  m_controller.SetContrast(value);
+  emit filter_chosen(m_ui->sb_contrast->whatsThis());
 }

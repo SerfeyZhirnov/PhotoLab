@@ -52,6 +52,8 @@ class View : public QMainWindow {
   void on_bt_custom_clicked();
   void on_sb_matrix_size_valueChanged(int);
   void on_kernelNeed();
+  void on_sb_brightness_valueChanged(int);
+  void on_sb_contrast_valueChanged(int);
 
  signals:
   void update_image(View::Image);
