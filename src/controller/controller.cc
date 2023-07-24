@@ -15,6 +15,10 @@ Controller::Controller() {
   m_association["Sobel left"] = [&]() { m_model.SobelLeft(); };
   m_association["Sobel right"] = [&]() { m_model.SobelRight(); };
   m_association["Sobel full"] = [&]() { m_model.SobelFull(); };
+  m_association["Custom filter"] = [&]() {
+    emit need_kernel();
+    m_model.Custom();
+  };
 }
 
 bool Controller::SetImage(const QString &filename) {

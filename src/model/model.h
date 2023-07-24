@@ -9,6 +9,7 @@ class Model {
  public:
   void SetImage(const QImage &image) { m_original = m_filtered = image; }
   void SetColor(const QColor &color) { m_custom_color = color; }
+  void SetKernel(const QVector<QVector<double>> &kernel) { m_custom_kernel = kernel; }
   void SetBrightness(const int &value) { m_brightness = value; }
   void SetContrast(const int &value) {
     m_contrast = qPow((100.0 + value) / 100.0, 2.0);
@@ -26,6 +27,7 @@ class Model {
   void SobelLeft();
   void SobelRight();
   void SobelFull();
+  void Custom();
   void Brightness();
   void Contrast();
 
@@ -33,6 +35,7 @@ class Model {
   QImage m_original;
   QImage m_filtered;
   QColor m_custom_color;
+  QVector<QVector<double>> m_custom_kernel;
   int m_brightness;
   double m_contrast;
 

@@ -11,5 +11,6 @@
         <file>images/sobel_left.bmp</file>
         <file>images/sobel_right.bmp</file>
         <file>images/toning.bmp</file>
+        <file>images/custom.bmp</file>
     </qresource>
 </RCC>

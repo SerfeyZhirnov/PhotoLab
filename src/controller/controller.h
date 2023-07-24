@@ -15,6 +15,9 @@ class Controller : public QObject {
   Controller();
   bool SetImage(const QString &);
   void SetColor(const QColor &);
+  void SetKernel(const QVector<QVector<double>> &kernel) {
+    m_model.SetKernel(kernel);
+  }
   const QImage &GetOriginal() { return m_model.GetOriginal(); }
   const QImage &GetFiltered() { return m_model.GetFiltered(); }
   bool ApplyFilter(const QString &);
@@ -24,6 +27,7 @@ class Controller : public QObject {
   QMap<QString, std::function<void()>> m_association;
  signals:
   void need_color();
+  void need_kernel();
 };
 
 #endif  // PHOTOLAB_CONTROLLER_CONTROLLER_H_

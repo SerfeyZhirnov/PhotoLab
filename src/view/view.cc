@@ -4,7 +4,9 @@
 
 View::View(QWidget *parent) : QMainWindow(parent), m_ui(new Ui::MainWindow) {
   m_ui->setupUi(this);
+  SetVisibleMatrixMenu(false);
   connect(&m_controller, &Controller::need_color, this, &View::on_colorNeed);
+  connect(&m_controller, &Controller::need_kernel, this, &View::on_kernelNeed);
   connect(this, &View::update_image, this, &View::on_imageUpdate);
   connect(this, &View::filter_chosen, this, &View::on_btnGroupSent);
   connect(this, &View::filter_chosen, this,
@@ -15,6 +17,7 @@ View::~View() { delete m_ui; }
 
 void View::resizeEvent(QResizeEvent *event) {
   QMainWindow::resizeEvent(event);
+  emit m_ui->sb_matrix_size->valueChanged(m_ui->sb_matrix_size->value());
   emit update_image(Image::Filtered);
 }
 
@@ -110,21 +113,50 @@ void View::on_btn_group_buttonClicked(QAbstractButton *button) {
   emit filter_chosen(button->whatsThis());
 }
 
-void View::on_pushButton_clicked() {
-  QStandardItemModel *model = new QStandardItemModel(3, 3, this);
+void View::SetVisibleMatrixMenu(bool visible) {
+  m_ui->sb_matrix_size->setVisible(visible);
+  m_ui->tv_matrix->setVisible(visible);
+  m_ui->bt_custom_apply->setVisible(visible);
+  emit update_image(Image::Filtered);
+}
 
-  model->setHorizontalHeaderLabels(QStringList() << "1"
-                                                 << "2"
-                                                 << "3");
+void View::on_bt_custom_clicked() { SetVisibleMatrixMenu(true); }
 
-  m_ui->tableView->setModel(model);
+void View::on_sb_matrix_size_valueChanged(int value) {
+  QStandardItemModel *model = new QStandardItemModel(value, value, this);
+  m_ui->tv_matrix->setModel(model);
 
-  for (int row = 0; row < 3; ++row) {
-    for (int col = 0; col < 3; ++col) {
+  const QSize rect = m_ui->tv_matrix->viewport()->size();
+  const int col_width = rect.width() / value;
+  const int row_height = rect.height() / value;
+
+  for (int row = 0; row < value; ++row) {
+    for (int col = 0; col < value; ++col) {
       QStandardItem *item = new QStandardItem();
       item->setData(0.0, Qt::EditRole);
+      item->setTextAlignment(Qt::AlignCenter);
       model->setItem(row, col, item);
+      m_ui->tv_matrix->setColumnWidth(col, col_width);
+    }
+    m_ui->tv_matrix->setRowHeight(row, row_height);
+  }
+}
+
+void View::on_kernelNeed() {
+  SetVisibleMatrixMenu(false);
+
+  QAbstractItemModel *model = m_ui->tv_matrix->model();
+  const int rows = model->rowCount();
+  const int cols = model->columnCount();
+
+  QVector<QVector<double>> result(rows, QVector<double>(cols));
+  for (int row = 0; row < rows; ++row) {
+    for (int col = 0; col < cols; ++col) {
+      QModelIndex index = model->index(row, col);
+      double value = model->data(index).toDouble();
+      result[row][col] = value;
     }
   }
-  m_ui->tableView->resizeColumnsToContents();
+
+  m_controller.SetKernel(result);
 }

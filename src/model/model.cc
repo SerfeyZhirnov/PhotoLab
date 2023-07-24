@@ -152,6 +152,10 @@ void Model::SobelFull() {
   Overlap(buf);
 }
 
+void Model::Custom() {
+  Convolution(m_custom_kernel);
+}
+
 void Model::Brightness() {
   for (int x = 0; x < m_original.width(); ++x) {
     for (int y = 0; y < m_original.height(); ++y) {

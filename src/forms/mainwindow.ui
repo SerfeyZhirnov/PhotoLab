@@ -2,6 +2,9 @@
 <ui version="4.0">
  <class>MainWindow</class>
  <widget class="QMainWindow" name="MainWindow">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -15,7 +18,23 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="0">
+    <item row="2" column="1">
+     <widget class="QPushButton" name="bt_custom_apply">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="whatsThis">
+       <string>Custom filter</string>
+      </property>
+      <property name="text">
+       <string>Apply</string>
+      </property>
+      <attribute name="buttonGroup">
+       <string notr="true">btn_group</string>
+      </attribute>
+     </widget>
+    </item>
+    <item row="1" column="0">
      <widget class="QLabel" name="lb_image">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
@@ -42,13 +61,19 @@
       </property>
      </widget>
     </item>
-    <item row="1" column="0">
+    <item row="3" column="0">
      <widget class="QScrollArea" name="sa_filters">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
         <horstretch>0</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>141</height>
+       </size>
       </property>
       <property name="widgetResizable">
        <bool>true</bool>
@@ -58,9 +83,15 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>1380</width>
+         <width>1498</width>
          <height>124</height>
         </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
        </property>
        <layout class="QHBoxLayout" name="horizontalLayout_2">
         <item>
@@ -356,23 +387,95 @@
           </attribute>
          </widget>
         </item>
+        <item>
+         <widget class="QPushButton" name="bt_custom">
+          <property name="styleSheet">
+           <string notr="true">border: 0</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset resource="../data/images.qrc">
+            <normaloff>:/images/images/custom.bmp</normaloff>:/images/images/custom.bmp</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>100</width>
+            <height>100</height>
+           </size>
+          </property>
+         </widget>
+        </item>
        </layout>
       </widget>
      </widget>
     </item>
-    <item row="0" column="1">
-     <widget class="QTableView" name="tableView"/>
-    </item>
     <item row="1" column="1">
-     <widget class="QPushButton" name="pushButton">
-      <property name="text">
-       <string>PushButton</string>
+     <widget class="QTableView" name="tv_matrix">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>150</width>
+        <height>150</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>750</width>
+        <height>750</height>
+       </size>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QSpinBox" name="sb_matrix_size">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="wrapping">
+       <bool>false</bool>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="readOnly">
+       <bool>false</bool>
+      </property>
+      <property name="keyboardTracking">
+       <bool>true</bool>
+      </property>
+      <property name="suffix">
+       <string/>
+      </property>
+      <property name="prefix">
+       <string>Matrix size: </string>
+      </property>
+      <property name="minimum">
+       <number>3</number>
+      </property>
+      <property name="maximum">
+       <number>15</number>
+      </property>
+      <property name="singleStep">
+       <number>2</number>
+      </property>
+      <property name="stepType">
+       <enum>QAbstractSpinBox::DefaultStepType</enum>
       </property>
      </widget>
     </item>
    </layout>
   </widget>
-  <widget class="QMenuBar" name="menubar">
+  <widget class="QMenuBar" name="menu_bar">
    <property name="geometry">
     <rect>
      <x>0</x>
