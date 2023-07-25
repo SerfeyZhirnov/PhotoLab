@@ -4,7 +4,7 @@ Controller::Controller() : m_model(new Model) {
   m_association["Grayscale"] = [&]() { m_model->Grayscale(); };
   m_association["Negative"] = [&]() { m_model->Negative(); };
   m_association["Toning"] = [&]() {
-    emit need_color();
+    emit need_color(Color::Simple);
     m_model->Toning();
   };
   m_association["Emboss"] = [&]() { m_model->Emboss(); };
@@ -21,6 +21,14 @@ Controller::Controller() : m_model(new Model) {
   };
   m_association["Brightness"] = [&]() { m_model->Brightness(); };
   m_association["Contrast"] = [&]() { m_model->Contrast(); };
+  m_association["HSL"] = [&]() {
+    emit need_color(Color::Custom);
+    m_model->HSL();
+  };
+  m_association["HSV"] = [&]() {
+    emit need_color(Color::Custom);
+    m_model->HSV();
+  };
 }
 
 Controller::~Controller() { delete m_model; }

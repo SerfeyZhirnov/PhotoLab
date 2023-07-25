@@ -25,11 +25,13 @@ class Controller : public QObject {
   const QImage &GetFiltered() { return m_model->GetFiltered(); }
   bool ApplyFilter(const QString &);
 
+  enum class Color { Simple, Custom };
+
  private:
   Model *m_model;
   QMap<QString, std::function<void()>> m_association;
  signals:
-  void need_color();
+  void need_color(Controller::Color);
   void need_kernel();
 };
 

@@ -152,9 +152,7 @@ void Model::SobelFull() {
   Overlap(buf);
 }
 
-void Model::Custom() {
-  Convolution(m_custom_kernel);
-}
+void Model::Custom() { Convolution(m_custom_kernel); }
 
 void Model::Brightness() {
   for (int x = 0; x < m_original.width(); ++x) {
@@ -191,6 +189,39 @@ void Model::Contrast() {
 
       QRgb changed = qRgb(red, green, blue);
       m_filtered.setPixel(x, y, changed);
+    }
+  }
+}
+
+void Model::HSL() {
+  for (int x = 0; x < m_original.width(); ++x) {
+    for (int y = 0; y < m_original.height(); ++y) {
+      QColor color = m_original.pixelColor(x, y).toHsl();
+
+      int hue = qBound(0, m_custom_color.hue() + color.hue(), 360);
+      int saturation =
+          qBound(0, m_custom_color.saturation() + color.saturation(), 255);
+      int lightness =
+          qBound(0, m_custom_color.lightness() + color.lightness(), 255);
+
+      color.setHsl(hue, saturation, lightness);
+      m_filtered.setPixelColor(x, y, color);
+    }
+  }
+}
+
+void Model::HSV() {
+  for (int x = 0; x < m_original.width(); ++x) {
+    for (int y = 0; y < m_original.height(); ++y) {
+      QColor color = m_original.pixelColor(x, y).toHsv();
+
+      int hue = qBound(0, m_custom_color.hue() + color.hue(), 360);
+      int saturation =
+          qBound(0, m_custom_color.saturation() + color.saturation(), 255);
+      int lightness = qBound(0, m_custom_color.value() + color.value(), 255);
+
+      color.setHsv(hue, saturation, lightness);
+      m_filtered.setPixelColor(x, y, color);
     }
   }
 }

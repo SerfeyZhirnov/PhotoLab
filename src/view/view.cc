@@ -159,8 +159,23 @@ void View::on_imageUpdate(View::Image choose) {
   }
 }
 
-void View::on_colorNeed() {
-  QColor color = QColorDialog::getColor();
+void View::on_colorNeed(Controller::Color choose) {
+  QColor color;
+
+  if (choose == Controller::Color::Simple) {
+    color = QColorDialog::getColor();
+  } else {
+    int hue = m_ui->sb_hue->value();
+    int saturation = m_ui->sb_saturation->value();
+
+    if (m_ui->rb_hsl->isChecked()) {
+      int lightness = m_ui->sb_lightness_value->value();
+      color = QColor::fromHsl(hue, saturation, lightness);
+    } else {
+      int value = m_ui->sb_lightness_value->value();
+      color = QColor::fromHsv(hue, saturation, value);
+    }
+  }
 
   m_controller->SetColor(color);
 }
@@ -218,10 +233,15 @@ void View::on_sb_contrast_valueChanged(int value) {
 
 void View::on_rb_hsl_clicked() {
   m_ui->sb_lightness_value->setPrefix("Lightness: ");
+  on_colorCorrectionChanged();
 }
 
 void View::on_rb_hsv_clicked() {
   m_ui->sb_lightness_value->setPrefix("Value: ");
+  on_colorCorrectionChanged();
 }
 
-void View::on_colorCorrectionChanged() { qDebug() << "ABOBA"; }
+void View::on_colorCorrectionChanged() {
+  QString what_is_this = (m_ui->rb_hsl->isChecked()) ? "HSL" : "HSV";
+  emit filter_chosen(what_is_this);
+}

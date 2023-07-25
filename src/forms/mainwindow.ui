@@ -737,7 +737,7 @@ filter</string>
             <string>Saturation: </string>
            </property>
            <property name="maximum">
-            <number>100</number>
+            <number>255</number>
            </property>
           </widget>
          </item>
@@ -789,6 +789,9 @@ filter</string>
              <height>16777215</height>
             </size>
            </property>
+           <property name="maximum">
+            <number>255</number>
+           </property>
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
            </property>
@@ -823,6 +826,9 @@ filter</string>
            <property name="prefix">
             <string>Lightness: </string>
            </property>
+           <property name="maximum">
+            <number>255</number>
+           </property>
           </widget>
          </item>
          <item row="3" column="0">
@@ -840,7 +846,7 @@ filter</string>
             </size>
            </property>
            <property name="maximum">
-            <number>100</number>
+            <number>255</number>
            </property>
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
