@@ -169,7 +169,7 @@ void Model::Brightness() {
   }
 }
 
-constexpr int Model::ApplyContrast(int color) {
+constexpr int Model::ApplyContrast(int color) const {
   double result = static_cast<double>(color) / 255.0;
   result -= 0.5;
   result *= m_contrast;

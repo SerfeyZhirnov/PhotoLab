@@ -84,6 +84,41 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
     WIN32_EXECUTABLE TRUE
 )
 
-if(QT_VERSION_MAJOR EQUAL 6)
-    qt_finalize_executable(${PROJECT_NAME})
+find_program(CPPCHECK cppcheck)
+if(CPPCHECK)
+    message(STATUS "cppcheck found: ${CPPCHECK}")
+    list(
+        APPEND CPPCHECK_ARGS
+        "--enable=all"
+        "--inconclusive"
+        "--quiet"
+        "--language=c++"
+        "--std=c++17"
+        "--suppress=unusedFunction"
+        "--suppress=missingInclude"
+        "--verbose"
+    )
+    add_custom_target(
+        cppcheck
+        COMMAND ${CPPCHECK} ${CPPCHECK_ARGS} ${HEADERS} ${SOURCES}
+    )
+else()
+    message(STATUS "cppcheck not found")
+endif()
+
+find_program(CLANG_FORMAT clang-format)
+if(CLANG_FORMAT)
+    message(STATUS "clang-format found: ${CLANG_FORMAT}")
+    list(
+        APPEND CLANG_ARGS
+        "-n"
+        "-style=Google"
+        "--verbose"
+    )
+    add_custom_target(
+        clang-format
+        COMMAND ${CLANG_FORMAT} ${CLANG_ARGS} ${HEADERS} ${SOURCES}
+    )
+else()
+    message(STATUS "clang-format not found")
 endif()

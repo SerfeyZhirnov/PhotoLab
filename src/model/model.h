@@ -7,6 +7,8 @@
 
 class Model {
  public:
+  Model() = default;
+  ~Model() = default;
   void SetImage(const QImage &image) { m_original = m_filtered = image; }
   void SetColor(const QColor &color) { m_custom_color = color; }
   void SetKernel(const QVector<QVector<double>> &kernel) {
@@ -47,7 +49,7 @@ class Model {
                               int &, int &, int &);
   inline void Convolution(const QVector<QVector<double>> &);
   inline void Overlap(const QImage &);
-  constexpr inline int ApplyContrast(int);
+  constexpr inline int ApplyContrast(int) const;
 };
 
 #endif  // PHOTOLAB_MODEL_MODEL_H_
