@@ -120,9 +120,9 @@
       <widget class="QWidget" name="sa_content_widget">
        <property name="geometry">
         <rect>
-         <x>0</x>
+         <x>-1339</x>
          <y>0</y>
-         <width>1498</width>
+         <width>1651</width>
          <height>124</height>
         </rect>
        </property>
@@ -135,8 +135,15 @@
        <layout class="QHBoxLayout" name="horizontalLayout_2">
         <item>
          <widget class="QLabel" name="lb_simple">
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
           <property name="text">
-           <string>TextLabel</string>
+           <string>Simple 
+Filters</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
           </property>
          </widget>
         </item>
@@ -216,6 +223,17 @@
           <attribute name="buttonGroup">
            <string notr="true">btn_group</string>
           </attribute>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="lb_convolution">
+          <property name="text">
+           <string>Convolution
+Filters</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
          </widget>
         </item>
         <item>
@@ -424,6 +442,18 @@
           <attribute name="buttonGroup">
            <string notr="true">btn_group</string>
           </attribute>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="lb_custom">
+          <property name="text">
+           <string>Custom
+convolution
+filter</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
          </widget>
         </item>
         <item>

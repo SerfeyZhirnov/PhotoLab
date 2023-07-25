@@ -2,11 +2,14 @@
 
 #include "ui_mainwindow.h"
 
-View::View(QWidget *parent) : QMainWindow(parent), m_ui(new Ui::MainWindow) {
+View::View(QWidget *parent)
+    : QMainWindow(parent),
+      m_ui(new Ui::MainWindow),
+      m_controller(new Controller) {
   m_ui->setupUi(this);
   SetVisibleMatrixMenu(false);
-  connect(&m_controller, &Controller::need_color, this, &View::on_colorNeed);
-  connect(&m_controller, &Controller::need_kernel, this, &View::on_kernelNeed);
+  connect(m_controller, &Controller::need_color, this, &View::on_colorNeed);
+  connect(m_controller, &Controller::need_kernel, this, &View::on_kernelNeed);
   connect(this, &View::update_image, this, &View::on_imageUpdate);
   connect(this, &View::filter_chosen, this, &View::on_btnGroupSent);
   connect(this, &View::filter_chosen, this,
@@ -21,7 +24,10 @@ View::View(QWidget *parent) : QMainWindow(parent), m_ui(new Ui::MainWindow) {
           &QSlider::setValue);
 }
 
-View::~View() { delete m_ui; }
+View::~View() {
+  delete m_ui;
+  delete m_controller;
+}
 
 void View::resizeEvent(QResizeEvent *event) {
   QMainWindow::resizeEvent(event);
@@ -53,9 +59,9 @@ void View::on_act_open_triggered() {
   const QString filename = QFileDialog::getOpenFileName(
       this, "Choose Image", QDir::homePath(), "BMP Files (*.bmp)");
 
-  bool status = m_controller.SetImage(filename);
+  bool status = m_controller->SetImage(filename);
   if (status) {
-    const QImage &image = m_controller.GetOriginal();
+    const QImage &image = m_controller->GetOriginal();
     m_ui->lb_image->setMinimumHeight(image.height());
     m_ui->lb_image->setMinimumWidth(image.width());
     emit update_image(Image::Filtered);
@@ -66,7 +72,7 @@ void View::on_act_open_triggered() {
 }
 
 void View::on_act_save_triggered() {
-  const QImage &image = m_controller.GetFiltered();
+  const QImage &image = m_controller->GetFiltered();
   if (image.isNull()) {
     UpdateStatusBarMessage("Image was not loaded!");
   } else {
@@ -87,7 +93,7 @@ void View::on_act_save_triggered() {
 }
 
 void View::on_btnGroupSent(QString title) {
-  bool status = m_controller.ApplyFilter(title);
+  bool status = m_controller->ApplyFilter(title);
 
   if (status) {
     UpdateStatusBarMessage("Filter successfully applied!");
@@ -97,9 +103,9 @@ void View::on_btnGroupSent(QString title) {
 }
 
 void View::on_imageUpdate(View::Image choose) {
-  QImage image = m_controller.GetFiltered();
+  QImage image = m_controller->GetFiltered();
   if (choose == Image::Original) {
-    image = m_controller.GetOriginal();
+    image = m_controller->GetOriginal();
   }
 
   if (image.isNull()) {
@@ -114,7 +120,7 @@ void View::on_imageUpdate(View::Image choose) {
 void View::on_colorNeed() {
   QColor color = QColorDialog::getColor();
 
-  m_controller.SetColor(color);
+  m_controller->SetColor(color);
 }
 
 void View::on_btn_group_buttonClicked(QAbstractButton *button) {
@@ -166,15 +172,15 @@ void View::on_kernelNeed() {
     }
   }
 
-  m_controller.SetKernel(result);
+  m_controller->SetKernel(result);
 }
 
 void View::on_sb_brightness_valueChanged(int value) {
-  m_controller.SetBrightness(value);
+  m_controller->SetBrightness(value);
   emit filter_chosen(m_ui->sb_brightness->whatsThis());
 }
 
 void View::on_sb_contrast_valueChanged(int value) {
-  m_controller.SetContrast(value);
+  m_controller->SetContrast(value);
   emit filter_chosen(m_ui->sb_contrast->whatsThis());
 }

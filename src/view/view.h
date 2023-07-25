@@ -34,7 +34,7 @@ class View : public QMainWindow {
 
  private:
   Ui::MainWindow *m_ui;
-  Controller m_controller;
+  Controller *m_controller;
 
   const int m_display_time = 10000;
   enum class Image { Original, Filtered };
