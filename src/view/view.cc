@@ -7,7 +7,6 @@ View::View(QWidget *parent)
       m_ui(new Ui::MainWindow),
       m_controller(new Controller) {
   m_ui->setupUi(this);
-  SetVisibleMatrixMenu(false);
   connect(m_controller, &Controller::need_color, this, &View::on_colorNeed);
   connect(m_controller, &Controller::need_kernel, this, &View::on_kernelNeed);
   connect(this, &View::update_image, this, &View::on_imageUpdate);
@@ -31,7 +30,7 @@ View::~View() {
 
 void View::resizeEvent(QResizeEvent *event) {
   QMainWindow::resizeEvent(event);
-  emit m_ui->sb_matrix_size->valueChanged(m_ui->sb_matrix_size->value());
+  emit m_ui->sb_kernel_size->valueChanged(m_ui->sb_kernel_size->value());
   emit update_image(Image::Filtered);
 }
 
@@ -127,20 +126,11 @@ void View::on_btn_group_buttonClicked(QAbstractButton *button) {
   emit filter_chosen(button->whatsThis());
 }
 
-void View::SetVisibleMatrixMenu(bool visible) {
-  m_ui->sb_matrix_size->setVisible(visible);
-  m_ui->tv_matrix->setVisible(visible);
-  m_ui->bt_custom_apply->setVisible(visible);
-  emit update_image(Image::Filtered);
-}
-
-void View::on_bt_custom_clicked() { SetVisibleMatrixMenu(true); }
-
-void View::on_sb_matrix_size_valueChanged(int value) {
+void View::on_sb_kernel_size_valueChanged(int value) {
   QStandardItemModel *model = new QStandardItemModel(value, value, this);
-  m_ui->tv_matrix->setModel(model);
+  m_ui->tv_kernel->setModel(model);
 
-  const QSize rect = m_ui->tv_matrix->viewport()->size();
+  const QSize rect = m_ui->tv_kernel->viewport()->size();
   const int col_width = rect.width() / value;
   const int row_height = rect.height() / value;
 
@@ -150,16 +140,14 @@ void View::on_sb_matrix_size_valueChanged(int value) {
       item->setData(0.0, Qt::EditRole);
       item->setTextAlignment(Qt::AlignCenter);
       model->setItem(row, col, item);
-      m_ui->tv_matrix->setColumnWidth(col, col_width);
+      m_ui->tv_kernel->setColumnWidth(col, col_width);
     }
-    m_ui->tv_matrix->setRowHeight(row, row_height);
+    m_ui->tv_kernel->setRowHeight(row, row_height);
   }
 }
 
 void View::on_kernelNeed() {
-  SetVisibleMatrixMenu(false);
-
-  QAbstractItemModel *model = m_ui->tv_matrix->model();
+  QAbstractItemModel *model = m_ui->tv_kernel->model();
   const int rows = model->rowCount();
   const int cols = model->columnCount();
 

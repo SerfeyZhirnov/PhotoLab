@@ -40,7 +40,6 @@ class View : public QMainWindow {
   enum class Image { Original, Filtered };
 
   void UpdateStatusBarMessage(QString);
-  void SetVisibleMatrixMenu(bool);
 
  private slots:
   void on_act_open_triggered();
@@ -49,8 +48,7 @@ class View : public QMainWindow {
   void on_imageUpdate(View::Image);
   void on_colorNeed();
   void on_btn_group_buttonClicked(QAbstractButton *);
-  void on_bt_custom_clicked();
-  void on_sb_matrix_size_valueChanged(int);
+  void on_sb_kernel_size_valueChanged(int);
   void on_kernelNeed();
   void on_sb_brightness_valueChanged(int);
   void on_sb_contrast_valueChanged(int);

@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>885</width>
-    <height>700</height>
+    <width>1000</width>
+    <height>800</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,87 +18,32 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="1" column="6" rowspan="4">
-     <layout class="QVBoxLayout" name="vl_matrix">
-      <item>
-       <widget class="QSpinBox" name="sb_matrix_size">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="layoutDirection">
-         <enum>Qt::LeftToRight</enum>
-        </property>
-        <property name="wrapping">
-         <bool>false</bool>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-        <property name="readOnly">
-         <bool>false</bool>
-        </property>
-        <property name="keyboardTracking">
-         <bool>true</bool>
-        </property>
-        <property name="suffix">
-         <string/>
-        </property>
-        <property name="prefix">
-         <string>Matrix size: </string>
-        </property>
-        <property name="minimum">
-         <number>3</number>
-        </property>
-        <property name="maximum">
-         <number>15</number>
-        </property>
-        <property name="singleStep">
-         <number>2</number>
-        </property>
-        <property name="stepType">
-         <enum>QAbstractSpinBox::DefaultStepType</enum>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QTableView" name="tv_matrix">
-        <property name="enabled">
-         <bool>true</bool>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>150</width>
-          <height>150</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>750</width>
-          <height>750</height>
-         </size>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="bt_custom_apply">
-        <property name="enabled">
-         <bool>true</bool>
-        </property>
-        <property name="whatsThis">
-         <string>Custom filter</string>
-        </property>
-        <property name="text">
-         <string>Apply</string>
-        </property>
-        <attribute name="buttonGroup">
-         <string notr="true">btn_group</string>
-        </attribute>
-       </widget>
-      </item>
-     </layout>
+    <item row="1" column="0" rowspan="3" colspan="2">
+     <widget class="QLabel" name="lb_image">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="font">
+       <font>
+        <kerning>false</kerning>
+       </font>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="wordWrap">
+       <bool>false</bool>
+      </property>
+      <property name="textInteractionFlags">
+       <set>Qt::NoTextInteraction</set>
+      </property>
+     </widget>
     </item>
     <item row="4" column="0">
      <widget class="QScrollArea" name="sa_filters">
@@ -120,7 +65,7 @@
       <widget class="QWidget" name="sa_content_widget">
        <property name="geometry">
         <rect>
-         <x>-1339</x>
+         <x>0</x>
          <y>0</y>
          <width>1651</width>
          <height>124</height>
@@ -458,6 +403,9 @@ filter</string>
         </item>
         <item>
          <widget class="QPushButton" name="bt_custom">
+          <property name="whatsThis">
+           <string>Custom filter</string>
+          </property>
           <property name="styleSheet">
            <string notr="true">border: 0</string>
           </property>
@@ -474,177 +422,247 @@ filter</string>
             <height>100</height>
            </size>
           </property>
+          <attribute name="buttonGroup">
+           <string notr="true">btn_group</string>
+          </attribute>
          </widget>
         </item>
        </layout>
       </widget>
      </widget>
     </item>
-    <item row="4" column="1">
-     <layout class="QGridLayout" name="gl_brightness_and_contrast">
-      <item row="0" column="1">
-       <widget class="QSpinBox" name="sb_brightness">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>110</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>110</width>
-          <height>16777215</height>
-         </size>
-        </property>
-        <property name="whatsThis">
-         <string>Brightness</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-        <property name="buttonSymbols">
-         <enum>QAbstractSpinBox::NoButtons</enum>
-        </property>
-        <property name="suffix">
-         <string/>
-        </property>
-        <property name="prefix">
-         <string>Brightness: </string>
-        </property>
-        <property name="minimum">
-         <number>-255</number>
-        </property>
-        <property name="maximum">
-         <number>255</number>
-        </property>
-        <property name="singleStep">
-         <number>1</number>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="0">
-       <widget class="QSlider" name="hs_brightness">
-        <property name="minimumSize">
-         <size>
-          <width>256</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>256</width>
-          <height>16777215</height>
-         </size>
-        </property>
-        <property name="minimum">
-         <number>-255</number>
-        </property>
-        <property name="maximum">
-         <number>255</number>
-        </property>
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0">
-       <widget class="QSlider" name="hs_contrast">
-        <property name="minimumSize">
-         <size>
-          <width>256</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>256</width>
-          <height>16777215</height>
-         </size>
-        </property>
-        <property name="minimum">
-         <number>-100</number>
-        </property>
-        <property name="maximum">
-         <number>100</number>
-        </property>
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1">
-       <widget class="QSpinBox" name="sb_contrast">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>110</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>110</width>
-          <height>16777215</height>
-         </size>
-        </property>
-        <property name="whatsThis">
-         <string>Contrast</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-        <property name="buttonSymbols">
-         <enum>QAbstractSpinBox::NoButtons</enum>
-        </property>
-        <property name="prefix">
-         <string>Contrast: </string>
-        </property>
-        <property name="minimum">
-         <number>-100</number>
-        </property>
-        <property name="maximum">
-         <number>100</number>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </item>
-    <item row="1" column="0" rowspan="3" colspan="2">
-     <widget class="QLabel" name="lb_image">
+    <item row="1" column="6" rowspan="4">
+     <widget class="QWidget" name="wg_kernel" native="true">
       <property name="sizePolicy">
-       <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+       <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
         <horstretch>0</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
       </property>
-      <property name="font">
-       <font>
-        <kerning>false</kerning>
-       </font>
+      <property name="maximumSize">
+       <size>
+        <width>780</width>
+        <height>16777215</height>
+       </size>
       </property>
-      <property name="text">
-       <string/>
+      <layout class="QVBoxLayout" name="vl_kernel">
+       <item>
+        <widget class="QSpinBox" name="sb_kernel_size">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>750</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="layoutDirection">
+          <enum>Qt::LeftToRight</enum>
+         </property>
+         <property name="wrapping">
+          <bool>false</bool>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <property name="readOnly">
+          <bool>false</bool>
+         </property>
+         <property name="keyboardTracking">
+          <bool>true</bool>
+         </property>
+         <property name="suffix">
+          <string/>
+         </property>
+         <property name="prefix">
+          <string>Kernel size: </string>
+         </property>
+         <property name="minimum">
+          <number>3</number>
+         </property>
+         <property name="maximum">
+          <number>15</number>
+         </property>
+         <property name="singleStep">
+          <number>2</number>
+         </property>
+         <property name="stepType">
+          <enum>QAbstractSpinBox::DefaultStepType</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QTableView" name="tv_kernel">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>150</width>
+           <height>150</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>750</width>
+           <height>750</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="4" column="1">
+     <widget class="QWidget" name="wg_brightness_and_contrast" native="true">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
       </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-      <property name="wordWrap">
-       <bool>false</bool>
-      </property>
-      <property name="textInteractionFlags">
-       <set>Qt::NoTextInteraction</set>
-      </property>
+      <layout class="QGridLayout" name="gl_brightness_and_contrast">
+       <item row="0" column="1">
+        <widget class="QSpinBox" name="sb_brightness">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>110</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>110</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="whatsThis">
+          <string>Brightness</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <property name="buttonSymbols">
+          <enum>QAbstractSpinBox::NoButtons</enum>
+         </property>
+         <property name="suffix">
+          <string/>
+         </property>
+         <property name="prefix">
+          <string>Brightness: </string>
+         </property>
+         <property name="minimum">
+          <number>-255</number>
+         </property>
+         <property name="maximum">
+          <number>255</number>
+         </property>
+         <property name="singleStep">
+          <number>1</number>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QSlider" name="hs_brightness">
+         <property name="minimumSize">
+          <size>
+           <width>256</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>256</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="minimum">
+          <number>-255</number>
+         </property>
+         <property name="maximum">
+          <number>255</number>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QSlider" name="hs_contrast">
+         <property name="minimumSize">
+          <size>
+           <width>256</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>256</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="minimum">
+          <number>-100</number>
+         </property>
+         <property name="maximum">
+          <number>100</number>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QSpinBox" name="sb_contrast">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>110</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>110</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="whatsThis">
+          <string>Contrast</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <property name="buttonSymbols">
+          <enum>QAbstractSpinBox::NoButtons</enum>
+         </property>
+         <property name="prefix">
+          <string>Contrast: </string>
+         </property>
+         <property name="minimum">
+          <number>-100</number>
+         </property>
+         <property name="maximum">
+          <number>100</number>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </widget>
     </item>
    </layout>
@@ -654,7 +672,7 @@ filter</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>885</width>
+     <width>1000</width>
      <height>24</height>
     </rect>
    </property>
