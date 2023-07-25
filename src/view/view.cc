@@ -7,12 +7,21 @@ View::View(QWidget *parent)
       m_ui(new Ui::MainWindow),
       m_controller(new Controller) {
   m_ui->setupUi(this);
+  ConfigureMainConnects();
+  ConfigureActionsConnects();
+  ConfigureColorCorrectionConnects();
+}
+
+void View::ConfigureMainConnects() {
   connect(m_controller, &Controller::need_color, this, &View::on_colorNeed);
   connect(m_controller, &Controller::need_kernel, this, &View::on_kernelNeed);
   connect(this, &View::update_image, this, &View::on_imageUpdate);
   connect(this, &View::filter_chosen, this, &View::on_btnGroupSent);
   connect(this, &View::filter_chosen, this,
           [this]() { emit update_image(Image::Filtered); });
+}
+
+void View::ConfigureColorCorrectionConnects() {
   connect(m_ui->hs_brightness, &QSlider::valueChanged, m_ui->sb_brightness,
           &QSpinBox::setValue);
   connect(m_ui->sb_brightness, &QSpinBox::valueChanged, m_ui->hs_brightness,
@@ -21,6 +30,17 @@ View::View(QWidget *parent)
           &QSpinBox::setValue);
   connect(m_ui->sb_contrast, &QSpinBox::valueChanged, m_ui->hs_contrast,
           &QSlider::setValue);
+}
+
+void View::ConfigureActionsConnects() {
+  connect(m_ui->act_filters, &QAction::triggered, m_ui->sa_filters,
+          &QScrollArea::setVisible);
+  connect(m_ui->act_custom_kernel, &QAction::triggered, m_ui->wg_kernel,
+          &QWidget::setVisible);
+  emit m_ui->act_custom_kernel->triggered();
+  connect(m_ui->act_custom_kernel, &QAction::triggered, this, [this]() {
+    emit m_ui->sb_kernel_size->valueChanged(m_ui->sb_kernel_size->value());
+  });
 }
 
 View::~View() {

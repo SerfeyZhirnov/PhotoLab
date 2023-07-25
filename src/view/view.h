@@ -39,6 +39,9 @@ class View : public QMainWindow {
   const int m_display_time = 10000;
   enum class Image { Original, Filtered };
 
+  void ConfigureMainConnects();
+  void ConfigureColorCorrectionConnects();
+  void ConfigureActionsConnects();
   void UpdateStatusBarMessage(QString);
 
  private slots:
