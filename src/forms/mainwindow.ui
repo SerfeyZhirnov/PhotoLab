@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1029</width>
-    <height>800</height>
+    <width>1416</width>
+    <height>853</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,13 +18,19 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="1" column="0" rowspan="3" colspan="2">
+    <item row="0" column="0" rowspan="4" colspan="3">
      <widget class="QLabel" name="lb_image">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
         <horstretch>0</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>200</width>
+        <height>200</height>
+       </size>
       </property>
       <property name="font">
        <font>
@@ -45,393 +51,7 @@
       </property>
      </widget>
     </item>
-    <item row="4" column="0">
-     <widget class="QScrollArea" name="sa_filters">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="minimumSize">
-       <size>
-        <width>310</width>
-        <height>141</height>
-       </size>
-      </property>
-      <property name="widgetResizable">
-       <bool>true</bool>
-      </property>
-      <widget class="QWidget" name="wg_sa_content">
-       <property name="geometry">
-        <rect>
-         <x>-616</x>
-         <y>0</y>
-         <width>1651</width>
-         <height>124</height>
-        </rect>
-       </property>
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <layout class="QHBoxLayout" name="horizontalLayout_2">
-        <item>
-         <widget class="QLabel" name="lb_simple">
-          <property name="styleSheet">
-           <string notr="true"/>
-          </property>
-          <property name="text">
-           <string>Simple 
-Filters</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="bt_grayscale">
-          <property name="whatsThis">
-           <string>Grayscale</string>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">border: 0</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-          <property name="icon">
-           <iconset resource="../data/images.qrc">
-            <normaloff>:/images/images/grayscale.bmp</normaloff>:/images/images/grayscale.bmp</iconset>
-          </property>
-          <property name="iconSize">
-           <size>
-            <width>100</width>
-            <height>100</height>
-           </size>
-          </property>
-          <attribute name="buttonGroup">
-           <string notr="true">btn_group</string>
-          </attribute>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="bt_negative">
-          <property name="whatsThis">
-           <string>Negative</string>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">border: 0</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-          <property name="icon">
-           <iconset resource="../data/images.qrc">
-            <normaloff>:/images/images/negative.bmp</normaloff>:/images/images/negative.bmp</iconset>
-          </property>
-          <property name="iconSize">
-           <size>
-            <width>100</width>
-            <height>100</height>
-           </size>
-          </property>
-          <attribute name="buttonGroup">
-           <string notr="true">btn_group</string>
-          </attribute>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="bt_toning">
-          <property name="whatsThis">
-           <string>Toning</string>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">border: 0</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-          <property name="icon">
-           <iconset resource="../data/images.qrc">
-            <normaloff>:/images/images/toning.bmp</normaloff>:/images/images/toning.bmp</iconset>
-          </property>
-          <property name="iconSize">
-           <size>
-            <width>100</width>
-            <height>100</height>
-           </size>
-          </property>
-          <attribute name="buttonGroup">
-           <string notr="true">btn_group</string>
-          </attribute>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="lb_convolution">
-          <property name="text">
-           <string>Convolution
-Filters</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="bt_emboss">
-          <property name="whatsThis">
-           <string>Emboss</string>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">border: 0</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-          <property name="icon">
-           <iconset resource="../data/images.qrc">
-            <normaloff>:/images/images/emboss.bmp</normaloff>:/images/images/emboss.bmp</iconset>
-          </property>
-          <property name="iconSize">
-           <size>
-            <width>100</width>
-            <height>100</height>
-           </size>
-          </property>
-          <attribute name="buttonGroup">
-           <string notr="true">btn_group</string>
-          </attribute>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="bt_sharpen">
-          <property name="whatsThis">
-           <string>Sharpen</string>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">border: 0</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-          <property name="icon">
-           <iconset resource="../data/images.qrc">
-            <normaloff>:/images/images/sharpen.bmp</normaloff>:/images/images/sharpen.bmp</iconset>
-          </property>
-          <property name="iconSize">
-           <size>
-            <width>100</width>
-            <height>100</height>
-           </size>
-          </property>
-          <attribute name="buttonGroup">
-           <string notr="true">btn_group</string>
-          </attribute>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="bt_box_blur">
-          <property name="whatsThis">
-           <string>Box blur</string>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">border: 0</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-          <property name="icon">
-           <iconset resource="../data/images.qrc">
-            <normaloff>:/images/images/box_blur.bmp</normaloff>:/images/images/box_blur.bmp</iconset>
-          </property>
-          <property name="iconSize">
-           <size>
-            <width>100</width>
-            <height>100</height>
-           </size>
-          </property>
-          <attribute name="buttonGroup">
-           <string notr="true">btn_group</string>
-          </attribute>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="bt_gaussian_blur">
-          <property name="whatsThis">
-           <string>Gaussian blur</string>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">border: 0</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-          <property name="icon">
-           <iconset resource="../data/images.qrc">
-            <normaloff>:/images/images/gaussian_blur.bmp</normaloff>:/images/images/gaussian_blur.bmp</iconset>
-          </property>
-          <property name="iconSize">
-           <size>
-            <width>100</width>
-            <height>100</height>
-           </size>
-          </property>
-          <attribute name="buttonGroup">
-           <string notr="true">btn_group</string>
-          </attribute>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="bt_laplacian">
-          <property name="whatsThis">
-           <string>Laplacian</string>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">border: 0</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-          <property name="icon">
-           <iconset resource="../data/images.qrc">
-            <normaloff>:/images/images/laplacian.bmp</normaloff>:/images/images/laplacian.bmp</iconset>
-          </property>
-          <property name="iconSize">
-           <size>
-            <width>100</width>
-            <height>100</height>
-           </size>
-          </property>
-          <attribute name="buttonGroup">
-           <string notr="true">btn_group</string>
-          </attribute>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="bt_sobel_left">
-          <property name="whatsThis">
-           <string>Sobel left</string>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">border: 0</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-          <property name="icon">
-           <iconset resource="../data/images.qrc">
-            <normaloff>:/images/images/sobel_left.bmp</normaloff>:/images/images/sobel_left.bmp</iconset>
-          </property>
-          <property name="iconSize">
-           <size>
-            <width>100</width>
-            <height>100</height>
-           </size>
-          </property>
-          <attribute name="buttonGroup">
-           <string notr="true">btn_group</string>
-          </attribute>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="bt_sobel_right">
-          <property name="whatsThis">
-           <string>Sobel right</string>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">border: 0</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-          <property name="icon">
-           <iconset resource="../data/images.qrc">
-            <normaloff>:/images/images/sobel_right.bmp</normaloff>:/images/images/sobel_right.bmp</iconset>
-          </property>
-          <property name="iconSize">
-           <size>
-            <width>100</width>
-            <height>100</height>
-           </size>
-          </property>
-          <attribute name="buttonGroup">
-           <string notr="true">btn_group</string>
-          </attribute>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="bt_sobel_full">
-          <property name="whatsThis">
-           <string>Sobel full</string>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">border: 0</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-          <property name="icon">
-           <iconset resource="../data/images.qrc">
-            <normaloff>:/images/images/sobel_full.bmp</normaloff>:/images/images/sobel_full.bmp</iconset>
-          </property>
-          <property name="iconSize">
-           <size>
-            <width>100</width>
-            <height>100</height>
-           </size>
-          </property>
-          <attribute name="buttonGroup">
-           <string notr="true">btn_group</string>
-          </attribute>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="lb_custom">
-          <property name="text">
-           <string>Custom
-convolution
-filter</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="bt_custom">
-          <property name="whatsThis">
-           <string>Custom filter</string>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">border: 0</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-          <property name="icon">
-           <iconset resource="../data/images.qrc">
-            <normaloff>:/images/images/custom.bmp</normaloff>:/images/images/custom.bmp</iconset>
-          </property>
-          <property name="iconSize">
-           <size>
-            <width>100</width>
-            <height>100</height>
-           </size>
-          </property>
-          <attribute name="buttonGroup">
-           <string notr="true">btn_group</string>
-          </attribute>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-     </widget>
-    </item>
-    <item row="1" column="6" rowspan="4">
+    <item row="0" column="3" rowspan="5">
      <widget class="QWidget" name="wg_kernel" native="true">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
@@ -517,153 +137,741 @@ filter</string>
       </layout>
      </widget>
     </item>
-    <item row="4" column="1">
-     <widget class="QWidget" name="wg_brightness_and_contrast" native="true">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <layout class="QGridLayout" name="gl_brightness_and_contrast">
-       <item row="0" column="1">
-        <widget class="QSpinBox" name="sb_brightness">
+    <item row="4" column="0" colspan="3">
+     <layout class="QHBoxLayout" name="hl_main">
+      <item>
+       <widget class="QScrollArea" name="sa_filters">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>290</width>
+          <height>141</height>
+         </size>
+        </property>
+        <property name="widgetResizable">
+         <bool>true</bool>
+        </property>
+        <widget class="QWidget" name="wg_sa_content">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>1651</width>
+           <height>124</height>
+          </rect>
+         </property>
          <property name="sizePolicy">
-          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
-         <property name="minimumSize">
-          <size>
-           <width>110</width>
-           <height>0</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>110</width>
-           <height>16777215</height>
-          </size>
-         </property>
-         <property name="whatsThis">
-          <string>Brightness</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-         <property name="buttonSymbols">
-          <enum>QAbstractSpinBox::NoButtons</enum>
-         </property>
-         <property name="suffix">
-          <string/>
-         </property>
-         <property name="prefix">
-          <string>Brightness: </string>
-         </property>
-         <property name="minimum">
-          <number>-255</number>
-         </property>
-         <property name="maximum">
-          <number>255</number>
-         </property>
-         <property name="singleStep">
-          <number>1</number>
-         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <item>
+           <widget class="QLabel" name="lb_simple">
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
+            <property name="text">
+             <string>Simple 
+Filters</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="bt_grayscale">
+            <property name="whatsThis">
+             <string>Grayscale</string>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">border: 0</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="../data/images.qrc">
+              <normaloff>:/images/images/grayscale.bmp</normaloff>:/images/images/grayscale.bmp</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>100</width>
+              <height>100</height>
+             </size>
+            </property>
+            <attribute name="buttonGroup">
+             <string notr="true">btn_group</string>
+            </attribute>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="bt_negative">
+            <property name="whatsThis">
+             <string>Negative</string>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">border: 0</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="../data/images.qrc">
+              <normaloff>:/images/images/negative.bmp</normaloff>:/images/images/negative.bmp</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>100</width>
+              <height>100</height>
+             </size>
+            </property>
+            <attribute name="buttonGroup">
+             <string notr="true">btn_group</string>
+            </attribute>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="bt_toning">
+            <property name="whatsThis">
+             <string>Toning</string>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">border: 0</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="../data/images.qrc">
+              <normaloff>:/images/images/toning.bmp</normaloff>:/images/images/toning.bmp</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>100</width>
+              <height>100</height>
+             </size>
+            </property>
+            <attribute name="buttonGroup">
+             <string notr="true">btn_group</string>
+            </attribute>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="lb_convolution">
+            <property name="text">
+             <string>Convolution
+Filters</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="bt_emboss">
+            <property name="whatsThis">
+             <string>Emboss</string>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">border: 0</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="../data/images.qrc">
+              <normaloff>:/images/images/emboss.bmp</normaloff>:/images/images/emboss.bmp</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>100</width>
+              <height>100</height>
+             </size>
+            </property>
+            <attribute name="buttonGroup">
+             <string notr="true">btn_group</string>
+            </attribute>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="bt_sharpen">
+            <property name="whatsThis">
+             <string>Sharpen</string>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">border: 0</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="../data/images.qrc">
+              <normaloff>:/images/images/sharpen.bmp</normaloff>:/images/images/sharpen.bmp</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>100</width>
+              <height>100</height>
+             </size>
+            </property>
+            <attribute name="buttonGroup">
+             <string notr="true">btn_group</string>
+            </attribute>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="bt_box_blur">
+            <property name="whatsThis">
+             <string>Box blur</string>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">border: 0</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="../data/images.qrc">
+              <normaloff>:/images/images/box_blur.bmp</normaloff>:/images/images/box_blur.bmp</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>100</width>
+              <height>100</height>
+             </size>
+            </property>
+            <attribute name="buttonGroup">
+             <string notr="true">btn_group</string>
+            </attribute>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="bt_gaussian_blur">
+            <property name="whatsThis">
+             <string>Gaussian blur</string>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">border: 0</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="../data/images.qrc">
+              <normaloff>:/images/images/gaussian_blur.bmp</normaloff>:/images/images/gaussian_blur.bmp</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>100</width>
+              <height>100</height>
+             </size>
+            </property>
+            <attribute name="buttonGroup">
+             <string notr="true">btn_group</string>
+            </attribute>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="bt_laplacian">
+            <property name="whatsThis">
+             <string>Laplacian</string>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">border: 0</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="../data/images.qrc">
+              <normaloff>:/images/images/laplacian.bmp</normaloff>:/images/images/laplacian.bmp</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>100</width>
+              <height>100</height>
+             </size>
+            </property>
+            <attribute name="buttonGroup">
+             <string notr="true">btn_group</string>
+            </attribute>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="bt_sobel_left">
+            <property name="whatsThis">
+             <string>Sobel left</string>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">border: 0</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="../data/images.qrc">
+              <normaloff>:/images/images/sobel_left.bmp</normaloff>:/images/images/sobel_left.bmp</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>100</width>
+              <height>100</height>
+             </size>
+            </property>
+            <attribute name="buttonGroup">
+             <string notr="true">btn_group</string>
+            </attribute>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="bt_sobel_right">
+            <property name="whatsThis">
+             <string>Sobel right</string>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">border: 0</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="../data/images.qrc">
+              <normaloff>:/images/images/sobel_right.bmp</normaloff>:/images/images/sobel_right.bmp</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>100</width>
+              <height>100</height>
+             </size>
+            </property>
+            <attribute name="buttonGroup">
+             <string notr="true">btn_group</string>
+            </attribute>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="bt_sobel_full">
+            <property name="whatsThis">
+             <string>Sobel full</string>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">border: 0</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="../data/images.qrc">
+              <normaloff>:/images/images/sobel_full.bmp</normaloff>:/images/images/sobel_full.bmp</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>100</width>
+              <height>100</height>
+             </size>
+            </property>
+            <attribute name="buttonGroup">
+             <string notr="true">btn_group</string>
+            </attribute>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="lb_custom">
+            <property name="text">
+             <string>Custom
+convolution
+filter</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="bt_custom">
+            <property name="whatsThis">
+             <string>Custom filter</string>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">border: 0</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="../data/images.qrc">
+              <normaloff>:/images/images/custom.bmp</normaloff>:/images/images/custom.bmp</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>100</width>
+              <height>100</height>
+             </size>
+            </property>
+            <attribute name="buttonGroup">
+             <string notr="true">btn_group</string>
+            </attribute>
+           </widget>
+          </item>
+         </layout>
         </widget>
-       </item>
-       <item row="0" column="0">
-        <widget class="QSlider" name="hs_brightness">
-         <property name="minimumSize">
-          <size>
-           <width>256</width>
-           <height>0</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>256</width>
-           <height>16777215</height>
-          </size>
-         </property>
-         <property name="minimum">
-          <number>-255</number>
-         </property>
-         <property name="maximum">
-          <number>255</number>
-         </property>
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="0">
-        <widget class="QSlider" name="hs_contrast">
-         <property name="minimumSize">
-          <size>
-           <width>256</width>
-           <height>0</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>256</width>
-           <height>16777215</height>
-          </size>
-         </property>
-         <property name="minimum">
-          <number>-100</number>
-         </property>
-         <property name="maximum">
-          <number>100</number>
-         </property>
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="1">
-        <widget class="QSpinBox" name="sb_contrast">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>110</width>
-           <height>0</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>110</width>
-           <height>16777215</height>
-          </size>
-         </property>
-         <property name="whatsThis">
-          <string>Contrast</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-         <property name="buttonSymbols">
-          <enum>QAbstractSpinBox::NoButtons</enum>
-         </property>
-         <property name="prefix">
-          <string>Contrast: </string>
-         </property>
-         <property name="minimum">
-          <number>-100</number>
-         </property>
-         <property name="maximum">
-          <number>100</number>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
+       </widget>
+      </item>
+      <item>
+       <widget class="QWidget" name="wg_brightness_and_contrast" native="true">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <layout class="QGridLayout" name="gl_brightness_and_contrast">
+         <item row="0" column="0">
+          <widget class="QSlider" name="hs_brightness">
+           <property name="minimumSize">
+            <size>
+             <width>256</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>256</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="minimum">
+            <number>-255</number>
+           </property>
+           <property name="maximum">
+            <number>255</number>
+           </property>
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QSpinBox" name="sb_contrast">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>110</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>110</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="whatsThis">
+            <string>Contrast</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="buttonSymbols">
+            <enum>QAbstractSpinBox::NoButtons</enum>
+           </property>
+           <property name="prefix">
+            <string>Contrast: </string>
+           </property>
+           <property name="minimum">
+            <number>-100</number>
+           </property>
+           <property name="maximum">
+            <number>100</number>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QSlider" name="hs_contrast">
+           <property name="minimumSize">
+            <size>
+             <width>256</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>256</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="minimum">
+            <number>-100</number>
+           </property>
+           <property name="maximum">
+            <number>100</number>
+           </property>
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QSpinBox" name="sb_brightness">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>110</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>110</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="whatsThis">
+            <string>Brightness</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="buttonSymbols">
+            <enum>QAbstractSpinBox::NoButtons</enum>
+           </property>
+           <property name="suffix">
+            <string/>
+           </property>
+           <property name="prefix">
+            <string>Brightness: </string>
+           </property>
+           <property name="minimum">
+            <number>-255</number>
+           </property>
+           <property name="maximum">
+            <number>255</number>
+           </property>
+           <property name="singleStep">
+            <number>1</number>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QWidget" name="wg_hsl_and_hsv" native="true">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_2">
+         <item row="2" column="0">
+          <widget class="QSlider" name="hs_hue">
+           <property name="minimumSize">
+            <size>
+             <width>256</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>256</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="maximum">
+            <number>360</number>
+           </property>
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="1">
+          <widget class="QSpinBox" name="sb_saturation">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>110</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>110</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="buttonSymbols">
+            <enum>QAbstractSpinBox::NoButtons</enum>
+           </property>
+           <property name="suffix">
+            <string/>
+           </property>
+           <property name="prefix">
+            <string>Saturation: </string>
+           </property>
+           <property name="maximum">
+            <number>100</number>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QSpinBox" name="sb_hue">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>110</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>110</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="buttonSymbols">
+            <enum>QAbstractSpinBox::NoButtons</enum>
+           </property>
+           <property name="prefix">
+            <string>Hue: </string>
+           </property>
+           <property name="maximum">
+            <number>360</number>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="0">
+          <widget class="QSlider" name="hs_lightness_value">
+           <property name="minimumSize">
+            <size>
+             <width>256</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>256</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="1">
+          <widget class="QSpinBox" name="sb_lightness_value">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>110</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>110</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="buttonSymbols">
+            <enum>QAbstractSpinBox::NoButtons</enum>
+           </property>
+           <property name="prefix">
+            <string>Lightness: </string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <widget class="QSlider" name="hs_saturation">
+           <property name="minimumSize">
+            <size>
+             <width>256</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>256</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="maximum">
+            <number>100</number>
+           </property>
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0">
+          <layout class="QHBoxLayout" name="hl_hsl_hsv">
+           <item>
+            <widget class="QRadioButton" name="rb_hsl">
+             <property name="text">
+              <string>HSL</string>
+             </property>
+             <property name="checked">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="rb_hsv">
+             <property name="text">
+              <string>HSV</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
     </item>
    </layout>
   </widget>
@@ -672,7 +880,7 @@ filter</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1029</width>
+     <width>1416</width>
      <height>24</height>
     </rect>
    </property>
@@ -689,6 +897,8 @@ filter</string>
     </property>
     <addaction name="act_filters"/>
     <addaction name="act_custom_kernel"/>
+    <addaction name="act_brightness_and_contrast"/>
+    <addaction name="act_hsl_and_hsv"/>
    </widget>
    <addaction name="mn_file"/>
    <addaction name="mn_view"/>
@@ -721,6 +931,25 @@ filter</string>
    </property>
    <property name="text">
     <string>Custom kernel</string>
+   </property>
+  </action>
+  <action name="act_brightness_and_contrast">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Brightness/Contrast</string>
+   </property>
+  </action>
+  <action name="act_hsl_and_hsv">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>HSL/HSV</string>
    </property>
   </action>
  </widget>

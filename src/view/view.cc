@@ -17,6 +17,12 @@ void View::ConfigureMainConnects() {
   connect(m_controller, &Controller::need_kernel, this, &View::on_kernelNeed);
   connect(this, &View::update_image, this, &View::on_imageUpdate);
   connect(this, &View::filter_chosen, this, &View::on_btnGroupSent);
+  connect(m_ui->sb_hue, &QSpinBox::valueChanged, this,
+          &View::on_colorCorrectionChanged);
+  connect(m_ui->sb_saturation, &QSpinBox::valueChanged, this,
+          &View::on_colorCorrectionChanged);
+  connect(m_ui->sb_lightness_value, &QSpinBox::valueChanged, this,
+          &View::on_colorCorrectionChanged);
   connect(this, &View::filter_chosen, this,
           [this]() { emit update_image(Image::Filtered); });
 }
@@ -30,6 +36,18 @@ void View::ConfigureColorCorrectionConnects() {
           &QSpinBox::setValue);
   connect(m_ui->sb_contrast, &QSpinBox::valueChanged, m_ui->hs_contrast,
           &QSlider::setValue);
+  connect(m_ui->hs_hue, &QSlider::valueChanged, m_ui->sb_hue,
+          &QSpinBox::setValue);
+  connect(m_ui->sb_hue, &QSpinBox::valueChanged, m_ui->hs_hue,
+          &QSlider::setValue);
+  connect(m_ui->hs_saturation, &QSlider::valueChanged, m_ui->sb_saturation,
+          &QSpinBox::setValue);
+  connect(m_ui->sb_saturation, &QSpinBox::valueChanged, m_ui->hs_saturation,
+          &QSlider::setValue);
+  connect(m_ui->hs_lightness_value, &QSlider::valueChanged,
+          m_ui->sb_lightness_value, &QSpinBox::setValue);
+  connect(m_ui->sb_lightness_value, &QSpinBox::valueChanged,
+          m_ui->hs_lightness_value, &QSlider::setValue);
 }
 
 void View::ConfigureActionsConnects() {
@@ -41,6 +59,11 @@ void View::ConfigureActionsConnects() {
   connect(m_ui->act_custom_kernel, &QAction::triggered, this, [this]() {
     emit m_ui->sb_kernel_size->valueChanged(m_ui->sb_kernel_size->value());
   });
+  connect(m_ui->act_brightness_and_contrast, &QAction::triggered,
+          m_ui->wg_brightness_and_contrast, &QWidget::setVisible);
+  connect(m_ui->act_hsl_and_hsv, &QAction::triggered, m_ui->wg_hsl_and_hsv,
+          &QWidget::setVisible);
+  emit m_ui->act_hsl_and_hsv->triggered();
 }
 
 View::~View() {
@@ -192,3 +215,13 @@ void View::on_sb_contrast_valueChanged(int value) {
   m_controller->SetContrast(value);
   emit filter_chosen(m_ui->sb_contrast->whatsThis());
 }
+
+void View::on_rb_hsl_clicked() {
+  m_ui->sb_lightness_value->setPrefix("Lightness: ");
+}
+
+void View::on_rb_hsv_clicked() {
+  m_ui->sb_lightness_value->setPrefix("Value: ");
+}
+
+void View::on_colorCorrectionChanged() { qDebug() << "ABOBA"; }
