@@ -48,7 +48,7 @@ set(PROJECT_SOURCES
 
 if(APPLE)
     set(MACOSX_BUNDLE_ICON_FILE appicon.png)
-    set(app_icon_macos "${CMAKE_SOURCE_DIR}/data/appicon.png")
+    set(app_icon_macos "${CMAKE_SOURCE_DIR}/data/icon/appicon.png")
     set_source_files_properties(${app_icon_macos} PROPERTIES MACOSX_PACKAGE_LOCATION "Resources")
 endif()
 

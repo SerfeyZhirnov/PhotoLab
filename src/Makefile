@@ -4,7 +4,19 @@ build:
 	cmake -S . -B build
 	cmake --build build
 
-test: clean
+install: build
+	cp -rf ./build/PhotoLab.app $(HOME)/Applications/
+
+uninstall:
+	rm -rf $(HOME)/Applications/PhotoLab.app
+
+clean:
+	find ./ -name "build" -type d -exec rm -rf {} +
+
+dist: clean
+	tar -czf PhotoLab.tgz ./*
+
+tests: clean
 	cmake -S ./tests -B ./tests/build -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
 	cmake --build ./tests/build
 	@cd tests/build/; ./PhotoLab_test
@@ -20,6 +32,3 @@ style: build
 
 cppcheck: build
 	@cd build/; make cppcheck
-
-clean:
-	find ./ -name "build" -type d -exec rm -rf {} +
