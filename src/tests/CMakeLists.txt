@@ -54,7 +54,7 @@ if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
     setup_target_for_coverage_lcov(
         NAME test_coverage
         EXECUTABLE ${PROJECT_NAME}
-        EXCLUDE "${PROJECT_SOURCE_DIR}/build/_deps/*" "/usr/local/*" "/usr/include/*"
+        EXCLUDE "${PROJECT_SOURCE_DIR}/build/*" "/usr/local/*" "/usr/include/*" "${PROJECT_SOURCE_DIR}/tests.cc"
         DEPENDENCIES ${PROJECT_NAME}
     )
 endif()
