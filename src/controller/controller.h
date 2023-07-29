@@ -21,18 +21,24 @@ class Controller : public QObject {
   }
   void SetBrightness(const int &value) { m_model->SetBrightness(value); }
   void SetContrast(const int &value) { m_model->SetContrast(value); }
+  void SetHSl(const int &hue, const int &saturation, const int &lightness) {
+    m_model->SetHSL(hue, saturation, lightness);
+  }
+  void SetHSV(const int &hue, const int &saturation, const int &value) {
+    m_model->SetHSV(hue, saturation, value);
+  }
   const QImage &GetOriginal() { return m_model->GetOriginal(); }
   const QImage &GetFiltered() { return m_model->GetFiltered(); }
   bool ApplyFilter(const QString &);
-
-  enum class Color { Simple, Custom };
 
  private:
   Model *m_model;
   QMap<QString, std::function<void()>> m_association;
  signals:
-  void need_color(Controller::Color);
+  void need_color();
   void need_kernel();
+  void need_HSL();
+  void need_HSV();
 };
 
 #endif  // PHOTOLAB_CONTROLLER_CONTROLLER_H_

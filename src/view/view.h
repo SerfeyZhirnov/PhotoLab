@@ -49,14 +49,16 @@ class View : public QMainWindow {
   void on_act_save_triggered();
   void on_btnGroupSent(QString);
   void on_imageUpdate(View::Image);
-  void on_colorNeed(Controller::Color);
+  void on_colorNeed();
   void on_btn_group_buttonClicked(QAbstractButton *);
   void on_sb_kernel_size_valueChanged(int);
   void on_kernelNeed();
   void on_sb_brightness_valueChanged(int);
   void on_sb_contrast_valueChanged(int);
   void on_rb_hsl_clicked();
+  void on_hslNeed();
   void on_rb_hsv_clicked();
+  void on_hsvNeed();
   void on_colorCorrectionChanged();
 
  signals:

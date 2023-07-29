@@ -18,6 +18,16 @@ class Model {
   void SetContrast(const int &value) {
     m_contrast = qPow((100.0 + value) / 100.0, 2.0);
   }
+  void SetHSL(const int &hue, const int &saturation, const int &lightness) {
+    m_hue = hue;
+    m_saturation = saturation;
+    m_lightness = lightness;
+  }
+  void SetHSV(const int &hue, const int &saturation, const int &value) {
+    m_hue = hue;
+    m_saturation = saturation;
+    m_value = value;
+  }
   const QImage &GetOriginal() const { return m_original; }
   const QImage &GetFiltered() const { return m_filtered; }
   void Grayscale();
@@ -44,12 +54,19 @@ class Model {
   QVector<QVector<double>> m_custom_kernel;
   int m_brightness;
   double m_contrast;
+  int m_hue;
+  int m_saturation;
+  int m_lightness;
+  int m_value;
 
   inline void CalculateColors(const QVector<QVector<double>> &, int &, int &,
                               int &, int &, int &);
   inline void Convolution(const QVector<QVector<double>> &);
   inline void Overlap(const QImage &);
   constexpr inline int ApplyContrast(int) const;
+  inline int CalculateHue(const QRgb &, double &, double &, double &);
+  inline QRgb RgbToHSL(const QRgb &);
+  inline QRgb RgbToHSV(const QRgb &);
 };
 
 #endif  // PHOTOLAB_MODEL_MODEL_H_

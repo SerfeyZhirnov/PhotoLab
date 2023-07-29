@@ -48,6 +48,8 @@ void View::ConfigureColorCorrectionConnects() {
           m_ui->sb_lightness_value, &QSpinBox::setValue);
   connect(m_ui->sb_lightness_value, &QSpinBox::valueChanged,
           m_ui->hs_lightness_value, &QSlider::setValue);
+  connect(m_controller, &Controller::need_HSL, this, &View::on_hslNeed);
+  connect(m_controller, &Controller::need_HSV, this, &View::on_hsvNeed);
 }
 
 void View::ConfigureActionsConnects() {
@@ -154,28 +156,14 @@ void View::on_imageUpdate(View::Image choose) {
     UpdateStatusBarMessage("Please, upload image!");
   } else {
     QSize updated = m_ui->lb_image->size();
-    QImage scaled = image.scaled(updated, Qt::KeepAspectRatio);
+    QImage scaled =
+        image.scaled(updated, Qt::KeepAspectRatio, Qt::SmoothTransformation);
     m_ui->lb_image->setPixmap(QPixmap::fromImage(scaled));
   }
 }
 
-void View::on_colorNeed(Controller::Color choose) {
-  QColor color;
-
-  if (choose == Controller::Color::Simple) {
-    color = QColorDialog::getColor();
-  } else {
-    int hue = m_ui->sb_hue->value();
-    int saturation = m_ui->sb_saturation->value();
-
-    if (m_ui->rb_hsl->isChecked()) {
-      int lightness = m_ui->sb_lightness_value->value();
-      color = QColor::fromHsl(hue, saturation, lightness);
-    } else {
-      int value = m_ui->sb_lightness_value->value();
-      color = QColor::fromHsv(hue, saturation, value);
-    }
-  }
+void View::on_colorNeed() {
+  QColor color = QColorDialog::getColor();
 
   m_controller->SetColor(color);
 }
@@ -236,9 +224,25 @@ void View::on_rb_hsl_clicked() {
   on_colorCorrectionChanged();
 }
 
+void View::on_hslNeed() {
+  int hue = m_ui->sb_hue->value();
+  int saturation = m_ui->sb_saturation->value();
+  int lightness = m_ui->sb_lightness_value->value();
+
+  m_controller->SetHSl(hue, saturation, lightness);
+}
+
 void View::on_rb_hsv_clicked() {
   m_ui->sb_lightness_value->setPrefix("Value: ");
   on_colorCorrectionChanged();
+}
+
+void View::on_hsvNeed() {
+  int hue = m_ui->sb_hue->value();
+  int saturation = m_ui->sb_saturation->value();
+  int value = m_ui->sb_lightness_value->value();
+
+  m_controller->SetHSV(hue, saturation, value);
 }
 
 void View::on_colorCorrectionChanged() {

@@ -193,35 +193,65 @@ void Model::Contrast() {
   }
 }
 
+int Model::CalculateHue(const QRgb &color, double &max, double &min,
+                        double &delta) {
+  double red = qRed(color) / 255.;
+  double green = qGreen(color) / 255.;
+  double blue = qBlue(color) / 255.;
+
+  max = qMax(qMax(red, green), blue);
+  min = qMin(qMin(red, green), blue);
+  delta = max - min;
+
+  if (delta == 0) return 0;
+  if (max == red) return qRound(60 * (green - blue) / delta);
+  if (max == green) return qRound(60 * ((blue - red) / delta + 2));
+  return qRound(60 * ((red - green) / delta + 4));
+}
+
+QRgb Model::RgbToHSL(const QRgb &color) {
+  double max = 0., min = 0., delta = 0.;
+
+  int hue = CalculateHue(color, max, min, delta);
+  int lightness = qRound((max + min) / 2. * 255.);
+  int saturation =
+      (delta == 0)
+          ? 0
+          : qRound(delta / (1. - qAbs(2. * lightness / 255. - 1.)) * 255.);
+
+  return QColor::fromHsl(qBound(0, (hue + m_hue) % 360, 359),
+                         qBound(0, saturation + m_saturation, 255),
+                         qBound(0, lightness + m_lightness, 255))
+      .rgb();
+}
+
 void Model::HSL() {
   for (int x = 0; x < m_original.width(); ++x) {
     for (int y = 0; y < m_original.height(); ++y) {
-      QColor color = m_original.pixelColor(x, y).toHsl();
-
-      int hue = qBound(0, m_custom_color.hue() + color.hue(), 360);
-      int saturation =
-          qBound(0, m_custom_color.saturation() + color.saturation(), 255);
-      int lightness =
-          qBound(0, m_custom_color.lightness() + color.lightness(), 255);
-
-      color.setHsl(hue, saturation, lightness);
-      m_filtered.setPixelColor(x, y, color);
+      QRgb color = m_original.pixel(x, y);
+      m_filtered.setPixelColor(x, y, RgbToHSL(color));
     }
   }
+}
+
+QRgb Model::RgbToHSV(const QRgb &color) {
+  double max = 0., min = 0., delta = 0.;
+
+  int hue = CalculateHue(color, max, min, delta);
+  int saturation = (max == 0) ? 0 : (delta / max * 255);
+  int value = max * 255;
+
+  return QColor::fromHsv(qBound(0, (hue + m_hue) % 360, 359),
+                         qBound(0, saturation + m_saturation, 255),
+                         qBound(0, value + m_value, 255))
+      .rgb();
 }
 
 void Model::HSV() {
   for (int x = 0; x < m_original.width(); ++x) {
     for (int y = 0; y < m_original.height(); ++y) {
-      QColor color = m_original.pixelColor(x, y).toHsv();
-
-      int hue = qBound(0, m_custom_color.hue() + color.hue(), 360);
-      int saturation =
-          qBound(0, m_custom_color.saturation() + color.saturation(), 255);
-      int lightness = qBound(0, m_custom_color.value() + color.value(), 255);
-
-      color.setHsv(hue, saturation, lightness);
-      m_filtered.setPixelColor(x, y, color);
+      QRgb color = m_original.pixel(x, y);
+      m_filtered.setPixelColor(x, y, RgbToHSV(color));
     }
   }
 }
