@@ -191,3 +191,29 @@ TEST(PhotoLab, Contrast) {
   QImage needed("./datasets/contrast.bmp");
   ASSERT_TRUE(AssertImages(result, needed));
 }
+
+TEST(PhotoLab, HSL) {
+  QImage image("./datasets/sample.bmp");
+  
+  Model model;
+  model.SetImage(image);
+  model.SetHSL(180, 15, 50);
+  model.HSL();
+  auto result = model.GetFiltered();
+
+  QImage needed("./datasets/hsl.bmp");
+  ASSERT_TRUE(AssertImages(result, needed));
+}
+
+TEST(PhotoLab, HSV) {
+  QImage image("./datasets/sample.bmp");
+  
+  Model model;
+  model.SetImage(image);
+  model.SetHSV(90, 255, 0);
+  model.HSV();
+  auto result = model.GetFiltered();
+
+  QImage needed("./datasets/hsv.bmp");
+  ASSERT_TRUE(AssertImages(result, needed));
+}
